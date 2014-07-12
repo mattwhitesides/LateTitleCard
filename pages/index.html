@@ -1,0 +1,127 @@
+{# YOUR HOMEPAGE #}
+
+{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
+{# http://paularmstrong.github.io/swig/docs/tags/ #}
+
+{# Learn about calling data into Webhook pages here: #}
+{# http://www.webhook.com/docs/template-rules-and-filters/ #}
+
+{# ------------------------------------------------------- #}
+
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/help/template-inheritance/ #}
+{% extends "templates/partials/base.html" %}
+
+{% include "templates/partials/paginator.html" %}
+
+{# This sets our page <title>. It will append "- Homepage" to the site title defined in base. #}
+{% block title %}{% parent %} - Home{% endblock %}
+
+{# First, grab the articles from the CMS #}
+{% set items = get('articles','movies', 'podcast', 'video_games') %}
+{% set types = getTypes() %}
+
+{% block content %} 
+
+<!-- <h1 class="centerText">LATE TITLE CARD DOT COM</h1> -->
+
+{% for item in items|sort('publish_date', true) %} 
+  {% if loop.first %}
+    <a href="{{ url(item) }}">
+      <div class="fullscreen background parallax" id="heroUnit" style="background-image:url('{{ item.header_image|imageSize(2048) }}');" data-img-width="2048" data-img-height="1556">
+        <div id="navBar">
+          <ul>
+            <li><a href="/">Home</a></li>
+            {% for type in types %}
+              <li><a href="{{ url(type) }}">{{ type.name }}</a></li>
+            {% endfor %}  
+          </ul>          
+        </div>
+        <div class="content-a">
+          <div class="content-b">
+            <h2>
+              {% if item._type|lower === 'movies' %}
+                Movie Review: {{ item.name }}
+              {% elseif item._type|lower === 'articles' %}
+                Breaking News: {{ item.name }}
+              {% elseif item._type|lower === 'tv' %}
+                Television Review: {{ item.name }}
+              {% elseif item._type|lower === 'podcast' %}
+              Podcast: {{ item.name }}
+              {% else %}
+                Video Game Review: {{ item.name }}
+              {% endif %}
+            </h2>
+            <h4>
+              {{ item.deck }}
+            </h4>
+          </div>
+        </div>
+      </div>
+    </a>
+  {% endif %}
+{% endfor %}
+
+<section class="smallHeroDivSect">
+  <div class="smallHeroDiv">
+    <ul>
+      {% for item in items|sort('publish_date', true) %} 
+        {% if not loop.first and 5 > loop.index %}
+          <li style="background-image: url({{ item.small_header_image|imageSize(200) }})">
+            <div class="smallHeroMaxWidth">
+              <a href="{{ url(item) }}">
+                <div class="smallHeroUnits">
+                  <h3>
+                    {% if item._type|lower === 'movies'  %}
+                      Movie Review: {{ item.name }}
+                    {% elseif item._type|lower === 'articles' %}
+                      Breaking News: {{ item.name }}
+                    {% elseif item._type|lower === 'tv' %}
+                      Television Review: {{ item.name }}
+                    {% elseif item._type|lower === 'podcast' %}
+                      Podcast: {{ item.name }}
+                    {% else %}
+                      Video Game Review: {{ item.name }}
+                    {% endif %}
+                  </h3>
+                </div>
+              </a>
+            </div>
+          </li>
+        {% endif %}
+      {% endfor %} 
+    </ul>  
+  </div>
+</section>
+
+<div class="bodyList">
+  <ul>
+    {% for item in items|slice(0,10) %} 
+      <li>
+        <a href="{{ url(item) }}">
+          <div class="bodyListItems">
+          <img src="{{ item.small_header_image|imageSize(100) }}" alt="{{ item.name }}" class="bodyListImg">
+            <h3 class="centerText">
+              {% if item._type|lower === 'movies'  %}
+                Movie Review: {{ item.name }}
+              {% elseif item._type|lower === 'articles' %}
+                Breaking News: {{ item.name }}
+              {% elseif item._type|lower === 'tv' %}
+                Television Review: {{ item.name }}
+              {% elseif item._type|lower === 'podcast' %}
+                Podcast: {{ item.name }}
+              {% else %}
+                Video Game Review: {{ item.name }}
+              {% endif %}
+            </h3>
+          </div>  
+        </a>
+      </li>
+      {% if not loop.last %}
+        <hr class="horizontalSeparator"></hr>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock %} 

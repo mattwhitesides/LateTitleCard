@@ -1,0 +1,63 @@
+{# ------------------------------------------------------- #}
+{# INDIVIDUAL VIEW FOR EACH podcast #}
+{# This page can use any data from http:localhost:2000/cms/#/form/podcast/ #}
+{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
+{# http://paularmstrong.github.io/swig/docs/tags/ #}
+{# Learn about calling data into Webhook pages here: #}
+{# http://www.webhook.com/docs/template-rules-and-filters/ #}
+{# ------------------------------------------------------- #}
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/help/template-inheritance/ #}
+{% extends "templates/partials/base.html" %}
+{# This sets our page <title>. It will append this podcast's name to the site title defined in base.html #}
+{% block title %}{% parent %} - {{ item.name }}{% endblock %}
+{% block content %}
+  <p><a href="/podcast/">View a list of all podcast</a></p>
+  <h1>{{ item.name }}</h1>
+  <ul>
+      <li>
+        <strong>Name: </strong>
+        {{ item.name }}
+      </li>
+      <li>
+        <strong>Create Date: </strong>
+        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
+        {{ item.create_date|date('F d Y') }}
+      </li>
+      <li>
+        <strong>Last Updated: </strong>
+        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
+        {{ item.last_updated|date('F d Y') }}
+      </li>
+      <li>
+        <strong>Publish Date: </strong>
+        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
+        {{ item.publish_date|date('F d Y') }}
+      </li>
+      <li>
+        <strong>Header Image: </strong>
+        {# You can pull out a lot more information from the image property. Info here: #}
+        {# http://www.webhook.com/docs/widget-template-reference/#image #}
+        <img src="{{ item.header_image|imageSize(200) }}" />
+      </li>
+      <li>
+        <strong>Small Header Image: </strong>
+        {# You can pull out a lot more information from the image property. Info here: #}
+        {# http://www.webhook.com/docs/widget-template-reference/#image #}
+        <img src="{{ item.small_header_image|imageSize(200) }}" />
+      </li>
+      <li>
+        <strong>Deck: </strong>
+        {{ item.deck }}
+      </li>
+      <li>
+        <strong>Audio file: </strong>
+        {# HTML5 audio player for your listening pleasure. #}
+        <audio src="{{ item.audio_file.url }}" controls></audio>
+      </li>
+      <li>
+        <strong>Preview URL: </strong>
+        {{ item.preview_url }}
+      </li>
+  </ul>
+{% endblock %}

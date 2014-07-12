@@ -1,0 +1,248 @@
+$assetsPath: "../../static/"
+$imgAssetsPath: "../../static/img/"
+$fontsAssetsPath: "../../static/fonts/"
+$dimLength: 2s
+$dimOpacity: .85
+$smallHeroDivWidth: 350px * 3
+$bodyFont: 'Montserrat', sans-serif
+$globalColor: white
+
+@import url("http://fonts.googleapis.com/css?family=Montserrat")
+
+@mixin border-radius($radius) 
+  -webkit-border-radius: $radius
+  -moz-border-radius: $radius
+  -ms-border-radius: $radius
+  border-radius: $radius
+
+@mixin dimAnimationMixin($dim)
+  -webkit-animation: dimAnimation $dim
+  animation: dimAnimation $dim
+  -webkit-animation-iteration-count: 1
+  animation-iteration-count: 1
+  -webkit-animation-fill-mode: forwards
+
+@mixin unDimAnimationMixin($dim)
+  -webkit-animation: unDimAnimation $dim
+  animation: unDimAnimation $dim
+
+@mixin radialGradient
+  background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,.35) 0%, rgba(0,0,0,0) 75%)
+  background: -webkit-gradient(radial, center center, 0px, center center, 75%, color-stop(0%,rgba(255,255,255,.35)), color-stop(75%,rgba(0,0,0,0)))
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,.35) 0%,rgba(0,0,0,0) 75%)
+  background: -o-radial-gradient(center, ellipse cover, rgba(255,255,255,.35) 0%,rgba(0,0,0,0) 75%)
+  background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,.35) 0%,rgba(0,0,0,0) 75%)
+  background: radial-gradient(ellipse at center, rgba(255,255,255,.35) 0%,rgba(0,0,0,0) 75%)
+
+@font-face 
+  font-family: caviarDreams
+  src: url($fontsAssetsPath + "basictitlefont.ttf")
+
+@-webkit-keyframes dimAnimation 
+  from 
+    opacity: $dimOpacity
+  to 
+    opacity: 1
+@keyframes dimAnimation 
+  from 
+    opacity: $dimOpacity
+  to 
+    opacity: 1
+@-webkit-keyframes unDimAnimation 
+  from 
+    opacity: 1
+  to 
+    opacity: $dimOpacity
+@keyframes unDimAnimation 
+  from 
+    opacity: 1
+  to 
+    opacity: $dimOpacity
+
+div
+  display: block
+
+body 
+  -webkit-font-smoothing: antialiased
+  height: auto
+  min-height: 100% 
+  background-color: black
+  color: $globalColor
+  h1, h2, h3, h4, p, li 
+    font-family: $bodyFont
+    text-shadow: black 0.1em 0.1em 0.2em
+  h1 
+    font-size: 295% 
+    font-weight: 100
+  a 
+    color: $globalColor
+    opacity: .9
+
+.wrapper
+  box-sizing: border-box
+
+.centerText 
+  text-align: center
+
+/* Begin Navbar CSS */
+
+#navBar
+  ul
+    list-style-type: none 
+    text-align: center
+    padding-top: 10px
+    li
+      display: inline
+      a:hover 
+        color: $globalColor .75
+        background-color: $globalColor
+        @include border-radius(5px) 
+        @include radialGradient
+    li a
+      text-decoration: none 
+      padding: .9em 1em 
+      color: $globalColor
+
+.contentList
+  a:hover 
+    color: $globalColor
+    background-color: #fff
+    @include border-radius(5px) 
+    margin: 0 auto 
+
+hr.horizontalSeparator 
+  border: 0 
+  height: 1px
+  position: relative
+  margin: 0.5em 0 /* Keep other elements away from pseudo elements*/
+
+hr.horizontalSeparator:before 
+  top: -0.5em
+  height: 1em
+
+hr.horizontalSeparator:after 
+  content: " "
+  height: 0.5em   /* half the height of :before */
+  top: 1px    /* height of hr*/
+
+hr.horizontalSeparator:before, hr.horizontalSeparator:after 
+  content: " "
+  position: absolute
+  width: 100%
+
+hr.horizontalSeparator, hr.horizontalSeparator:before 
+  @include radialGradient
+
+body, hr.horizontalSeparator:after 
+  background: #000
+
+/* End Navbar CSS */
+
+/* Begin Hero Unit CSS */
+#heroUnit
+  
+
+.smallHeroDivSect
+  border-top: 1px solid #000
+  position: relative
+  .smallHeroDiv
+    position: relative
+    width: 100%
+    max-width: $smallHeroDivWidth
+    margin: 0 auto
+  :after
+    content: " "
+    display: block
+    width: 100%
+    height: 1px
+    position: absolute
+    top: 0
+    z-index: 1
+  ul
+    display: table
+    width: 100%
+  div
+    display: block
+    height: 100%
+    position: relative
+    z-index: 1
+    .smallHeroUnits
+      padding: 20px 15px 0px 20px
+      position: relative
+      left: 0
+      bottom: 0 
+      h3
+        font-weight: 600
+        position: absolute
+        padding: 0 0 4px 2px
+        bottom: 0
+        left: 0
+    li
+      background-position: center top
+      display: table-cell
+      margin: 0
+      padding: 0
+      position: relative
+      background-size: cover
+      height: 220px
+      @include unDimAnimationMixin($dimLength)
+    li:hover
+      @include dimAnimationMixin($dimLength)
+    li:first-child:after
+      background-position: left
+      // margin-left: 27% 
+    li:before, li:after
+      content: " "
+      display: block
+      position: absolute
+      float: left
+      width: 100%
+      height: 100%
+      left: 0
+      bottom: 0
+
+/* End Hero Unit CSS */
+
+/* background setup */
+
+.background
+  background-repeat: no-repeat
+  /* custom background-position */
+  background-position: 50% 50%
+  /* ie8- graceful degradation */
+  background-position: 50% 50%9 !important
+
+/* KEEP AT BOTTOM OR FIGURE OUT WHATS UP */
+/* fullscreen setup */
+html, body
+  /* give this to all tags from html to .fullscreen */
+  height: 100%
+
+.fullscreen, .content-a
+  width: 100%
+  min-height: 100%
+
+.not-fullscreen, .fullscreen.not-overflow
+  height: 100%
+  overflow: hidden
+  .content-a
+    height: 100%
+    overflow: hidden
+
+/* content centering styles */
+
+.content-a
+  display: table
+  text-align: center
+.content-b
+  display: table-cell
+  position: relative
+  vertical-align: middle
+  text-align: center
+
+ul, ol, dl
+  margin: 0
+  padding: 0
+  list-style: none
+  list-style-image: none
+  /* THIS BETTER STILL BE THE BOTTOM */
