@@ -1,0 +1,16 @@
+<!-- {# Setup #}
+	{# set types = getTypes() #}
+{# End of Setup #}
+
+<div id="navBar">
+	<ul>
+		<li><a href="/">Home</a></li>
+		{% for type in types %}
+			<li><a href="{{ url(type) }}">{{ type.name }}</a></li>
+		{% endfor %} 	
+	</ul>
+	<hr class="horizontalSeparator"></hr>
+</div>
+
+
+ -->

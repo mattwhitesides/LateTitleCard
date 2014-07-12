@@ -18,17 +18,18 @@
 {% block title %}{% parent %} - Home{% endblock %}
 
 {# First, grab the articles from the CMS #}
-{% set items = get('articles','movies', 'podcast', 'video_games') %}
+{% set items = get('articles','movies', 'podcast', 'videogames') %}
+{% set heroItems = get('movies', 'podcast', 'videogames') %}
 {% set types = getTypes() %}
 
 {% block content %} 
 
 <!-- <h1 class="centerText">LATE TITLE CARD DOT COM</h1> -->
 
-{% for item in items|sort('publish_date', true) %} 
+{% for heroItem in heroItems|sort('publish_date', true) %} 
   {% if loop.first %}
-    <a href="{{ url(item) }}">
-      <div class="fullscreen background parallax" id="heroUnit" style="background-image:url('{{ item.header_image|imageSize(2048) }}');" data-img-width="2048" data-img-height="1556">
+    <a href="{{ url(heroItem) }}">
+      <div class="fullscreen background parallax" id="heroUnit" style="background-image:url('{{ heroItem.header_image|imageSize(2048) }}');" data-img-width="2048" data-img-height="1556">
         <div id="navBar">
           <ul>
             <li><a href="/">Home</a></li>
@@ -39,22 +40,24 @@
         </div>
         <div class="content-a">
           <div class="content-b">
-            <h2>
-              {% if item._type|lower === 'movies' %}
-                Movie Review: {{ item.name }}
-              {% elseif item._type|lower === 'articles' %}
-                Breaking News: {{ item.name }}
-              {% elseif item._type|lower === 'tv' %}
-                Television Review: {{ item.name }}
-              {% elseif item._type|lower === 'podcast' %}
-              Podcast: {{ item.name }}
-              {% else %}
-                Video Game Review: {{ item.name }}
-              {% endif %}
-            </h2>
-            <h4>
-              {{ item.deck }}
-            </h4>
+            <a href="{{ url(heroItem) }}" class="heroText">
+              <h2>
+                {% if heroItem._type|lower === 'movies' %}
+                  Movie Review: {{ heroItem.name }}
+                {% elseif heroItem._type|lower === 'articles' %}
+                  Breaking News: {{ heroItem.name }}
+                {% elseif heroItem._type|lower === 'tv' %}
+                  Television Review: {{ heroItem.name }}
+                {% elseif heroItem._type|lower === 'podcast' %}
+                  Podcast: {{ heroItem.name }}
+                {% else %}
+                  Video Game Review: {{ heroItem.name }}
+                {% endif %}
+              </h2>
+              <h4>
+                {{ heroItem.deck }}
+              </h4>
+            </a>
           </div>
         </div>
       </div>
