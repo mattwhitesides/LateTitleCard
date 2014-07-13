@@ -20,11 +20,13 @@
 {# First, grab the articles from the CMS #}
 {% set items = get('articles','movies', 'podcast', 'videogames', 'tv') %}
 {% set heroItems = get('movies', 'podcast', 'videogames', 'tv') %}
-{% set types = getTypes() %}
+{% set types = getTypes() %} 
 
 {% block content %} 
 
-<!-- <h1 class="centerText">LATE TITLE CARD DOT COM</h1> -->
+<!-- <h1 class="centerText">LATE TITLE CARD DOT COM</h1> 
+
+-->
 
 {% for heroItem in heroItems|sort('publish_date', true) %} 
   {% if loop.first %}
