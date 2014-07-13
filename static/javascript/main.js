@@ -1,10 +1,4 @@
 (function() {
-
-
-
-}).call(this);
-
-(function() {
   var backgroundResize, fullscreenFix, parallaxPosition;
 
   fullscreenFix = function() {
