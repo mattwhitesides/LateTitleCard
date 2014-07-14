@@ -26,7 +26,6 @@
 
   {% for heroItem in heroItems|sort('publish_date', true) %} 
     {% if loop.first %}
-      <a href="{{ url(heroItem) }}">
         <div class="fullscreen background parallax not-overflow" id="heroUnit" style="background-image:url('{{ heroItem.header_image|imageSize(2048) }}');" data-img-width="2048" data-img-height="1556">
           <div id="navBar">
             <ul>
@@ -59,7 +58,6 @@
             </div>
           </div>
         </div>
-      </a>
     {% endif %}
   {% endfor %}
 
