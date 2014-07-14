@@ -1,8 +1,5 @@
-## Webhook preprocessor theme
+##! LATE TITLE CARD DOT COM BRAH !##
 
-This theme builds a grunt file and installs the needed
-Node modules to preprocess Sass, Less and Coffescript
-files.
+This the obviouly the source code to latetitlecard.com built using the Webhook.org CMS, Node.js and the Swig templating system.
 
-Once installed, you'll need your restart your Webhook
-runserver for the watch command to properly fire.
+## Code documentaion to come

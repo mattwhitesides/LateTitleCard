@@ -29,17 +29,6 @@
   {# This is how you set pagination. It's always important to do this after your sort. #}
   {% set data = paginate(data, 5) %}
 
-  {% set types = getTypes() %} 
-
-  <div id="navBar">
-    <ul>
-      <li><a href="/">Home</a></li>
-      {% for type in types %}
-        <li><a href="{{ url(type) }}">{{ type.name }}</a></li>
-      {% endfor %}  
-    </ul>          
-  </div>
-
   <h1>List of tv</h1>
 
   {# This forloop can use any data from http:localhost:2000/cms/#/form/tv/ #}

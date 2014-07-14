@@ -26,38 +26,38 @@
 
   {% for heroItem in heroItems|sort('publish_date', true) %} 
     {% if loop.first %}
-        <div class="fullscreen background parallax not-overflow" id="heroUnit" style="background-image:url('{{ heroItem.header_image|imageSize(2048) }}');" data-img-width="2048" data-img-height="1556">
-          <div id="navBar">
-            <ul>
-              <li><a href="/">Home</a></li>
-              {% for type in types %}
-                <li><a href="{{ url(type) }}">{{ type.name }}</a></li>
-              {% endfor %}  
-            </ul>          
-          </div>
-          <div class="content-a">
-            <div class="content-b">
-              <a href="{{ url(heroItem) }}" class="heroText">
-                <h2>
-                  {% if heroItem._type|lower === 'movies' %}
-                    Movie Review: {{ heroItem.name }}
-                  {% elseif heroItem._type|lower === 'articles' %}
-                    Breaking News: {{ heroItem.name }}
-                  {% elseif heroItem._type|lower === 'tv' %}
-                    Television Review: {{ heroItem.name }}
-                  {% elseif heroItem._type|lower === 'podcast' %}
-                    Podcast: {{ heroItem.name }}
-                  {% else %}
-                    Video Game Review: {{ heroItem.name }}
-                  {% endif %}
-                </h2>
-                <h4>
-                  {{ heroItem.deck }}
-                </h4>
-              </a>
-            </div>
+      <div class="fullscreen background parallax not-overflow" id="heroUnit" style="background-image:url('{{ heroItem.header_image|imageSize(2048) }}');" data-img-width="2048" data-img-height="1556">
+        <div id="navBar">
+          <ul>
+            <li><a href="/">Home</a></li>
+            {% for type in types %}
+              <li><a href="{{ url(type) }}">{{ type.name }}</a></li>
+            {% endfor %}  
+          </ul>          
+        </div>
+        <div class="content-a">
+          <div class="content-b">
+            <a href="{{ url(heroItem) }}" class="heroText">
+              <h2>
+                {% if heroItem._type|lower === 'movies' %}
+                  Movie Review: {{ heroItem.name }}
+                {% elseif heroItem._type|lower === 'articles' %}
+                  Breaking News: {{ heroItem.name }}
+                {% elseif heroItem._type|lower === 'tv' %}
+                  Television Review: {{ heroItem.name }}
+                {% elseif heroItem._type|lower === 'podcast' %}
+                  Podcast: {{ heroItem.name }}
+                {% else %}
+                  Video Game Review: {{ heroItem.name }}
+                {% endif %}
+              </h2>
+              <h4>
+                {{ heroItem.deck }}
+              </h4>
+            </a>
           </div>
         </div>
+      </div>
     {% endif %}
   {% endfor %}
 
