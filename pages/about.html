@@ -1,0 +1,37 @@
+{% extends "templates/partials/base.html" %}
+
+{% block title %}{% parent %} - articles{% endblock %}
+
+{% block content %}
+
+  {% set types = getTypes() %} 
+
+  <div id="navBar">
+    <ul>
+      <li><a href="/">Home</a></li>
+      {% for type in types %}
+        <li><a href="{{ url(type) }}">{{ type.name }}</a></li>
+      {% endfor %}  
+    </ul>          
+  </div>
+
+  <h1 class="centerText">Late Title Card Dot Com</h1>
+  <h4 class="centerText">Alpha v0.11</h4>
+  <h1 class="centerText">About Us</h1>
+
+  <article>
+	<h2>We're Late Title Card Dot Com, industry leaders in online media generated content, specializing in entertainment&nbsp;score calculation.&nbsp;</h2>
+	<p style="margin-left: 20px;">
+		Latetitlecard.com was founded in 2014. Our mission is to provide concrete, simple and passionate critiques of all our interests. Our goal is to combine the latest in web technologies and hard hitting journalism to bring the best in news, previews and reviews. The topics we cover include but are not limited to Film, Television Series, Video Games and Technology.
+	</p>
+	<h2>The Crew</h2>
+	<h3 style="margin-left: 20px;">Tyler Hall - Executive&nbsp;Editor in Chief</h3>
+	<h3 style="margin-left: 20px;">Matthew Whitesides -&nbsp;Lead in&nbsp;Production&nbsp;Technologies&nbsp;</h3>
+	<h2>The Tech</h2>
+	<p>Late Title Card is&nbsp;powered&nbsp;by the Webhook Content Management System, Swig Interface Generator, Node.js Server&nbsp;Platform, Sass Language&nbsp;Extension&nbsp;for CSS, CoffeeScript&nbsp;Syntactic&nbsp;the&nbsp;JavaScript Language and much more.</p>
+	<h2>Follow the Progress of Late Title Card</h2>
+	<p>The source code for Late Title Card is posted online, feel free to follow along with the development including revision history and commit changes.</p>
+	<a href="https://github.com/mattwhitesides/LateTitleCard"><h3>LateTitleCard.Com GitHub</h3></a>
+  </article>
+
+{% endblock %}
