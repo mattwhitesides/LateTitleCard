@@ -71,6 +71,10 @@ body a {
   text-align: center;
 }
 
+.center {
+  margin: 0 auto;
+}
+
 /* Begin Navbar CSS */
 #navBar ul {
   list-style-type: none;
@@ -232,6 +236,26 @@ body, hr.horizontalSeparator:after {
 }
 
 /* End Hero Unit CSS */
+/* Body List */
+.bodyListImg {
+  display: block;
+  margin: auto;
+}
+
+.bodyList {
+  margin: 0 36%;
+}
+.bodyList hr {
+  padding-bottom: 10px;
+}
+.bodyList a {
+  text-decoration: none;
+}
+.bodyList a:hover {
+  text-decoration: underline;
+}
+
+/* End Body List */
 /* background setup */
 .background {
   background-repeat: no-repeat;

@@ -61,46 +61,80 @@
     {% endif %}
   {% endfor %}
 
+  <br><br>
+
   <section class="smallHeroDivSect">
     <div class="smallHeroDiv">
       <ul>
-        {% for item in items|sort('publish_date', true) %} 
-          {% if not loop.first and 5 > loop.index %}
-            <li style="background-image: url({{ item.small_header_image|imageSize(200) }})">
-              <div class="smallHeroMaxWidth">
-                <a href="{{ url(item) }}">
-                  <div class="smallHeroUnits">
-                    <h3>
-                      {% if item._type|lower === 'movies'  %}
-                        Movie Review: {{ item.name }}
-                      {% elseif item._type|lower === 'articles' %}
-                        Breaking News: {{ item.name }}
-                      {% elseif item._type|lower === 'tv' %}
-                        Television Review: {{ item.name }}
-                      {% elseif item._type|lower === 'podcast' %}
-                        Podcast: {{ item.name }}
-                      {% else %}
-                        Video Game Review: {{ item.name }}
-                      {% endif %}
-                    </h3>
-                  </div>
-                </a>
-              </div>
-            </li>
-          {% endif %}
+        {% for item in items|sort('publish_date', true)|slice(1,3) %} 
+          <li style="background-image: url({{ item.small_header_image|imageSize(200) }})">
+            <div class="smallHeroMaxWidth">
+              <a href="{{ url(item) }}">
+                <div class="smallHeroUnits">
+                  <h3>
+                    {% if item._type|lower === 'movies'  %}
+                      Movie Review: {{ item.name }}
+                    {% elseif item._type|lower === 'articles' %}
+                      Breaking News: {{ item.name }}
+                    {% elseif item._type|lower === 'tv' %}
+                      Television Review: {{ item.name }}
+                    {% elseif item._type|lower === 'podcast' %}
+                      Podcast: {{ item.name }}
+                    {% else %}
+                      Video Game Review: {{ item.name }}
+                    {% endif %}
+                  </h3>
+                </div>
+              </a>
+            </div>
+          </li>
         {% endfor %} 
       </ul>  
     </div>
   </section>
 
-  <div class="bodyList">
+  <section class="smallHeroDivSect">
+    <div class="smallHeroDiv">
+      <ul>
+        {% for item in items|sort('publish_date', true)|slice(4,3) %} 
+          <li style="background-image: url({{ item.small_header_image|imageSize(200) }})">
+            <div class="smallHeroMaxWidth">
+              <a href="{{ url(item) }}">
+                <div class="smallHeroUnits">
+                  <h3>
+                    {% if item._type|lower === 'movies'  %}
+                      Movie Review: {{ item.name }}
+                    {% elseif item._type|lower === 'articles' %}
+                      Breaking News: {{ item.name }}
+                    {% elseif item._type|lower === 'tv' %}
+                      Television Review: {{ item.name }}
+                    {% elseif item._type|lower === 'podcast' %}
+                      Podcast: {{ item.name }}
+                    {% else %}
+                      Video Game Review: {{ item.name }}
+                    {% endif %}
+                  </h3>
+                </div>
+              </a>
+            </div>
+          </li>
+        {% endfor %} 
+      </ul>  
+    </div>
+  </section>
+
+  <br><br>
+  <hr class="horizontalSeparator" style="margin: 0 15%"></hr>
+  <br>
+
+  <div class="bodyList center">
     <ul>
-      {% for item in items|slice(0,10) %} 
+      {% for item in items|sort('publish_date', true)|slice(8,8) %} 
         <li>
           <a href="{{ url(item) }}">
-            <div class="bodyListItems">
-            <img src="{{ item.small_header_image|imageSize(100) }}" alt="{{ item.name }}" class="bodyListImg">
-              <h3 class="centerText">
+            <img src="{{ item.small_header_image|imageSize(200) }}" alt="{{ item.name }}" class="bodyListImg">
+            <div class="bodyListItems centerText">
+              <h3>
                 {% if item._type|lower === 'movies'  %}
                   Movie Review: {{ item.name }}
                 {% elseif item._type|lower === 'articles' %}
@@ -113,12 +147,13 @@
                   Video Game Review: {{ item.name }}
                 {% endif %}
               </h3>
+              <p>
+                {{ item.deck }}
+              </p>              
             </div>  
           </a>
-        </li>
-        {% if not loop.last %}
           <hr class="horizontalSeparator"></hr>
-        {% endif %}
+        </li>
       {% endfor %}
     </ul>
   </div>
