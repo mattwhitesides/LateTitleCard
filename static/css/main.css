@@ -337,3 +337,15 @@ article {
 }
 
 /* End Individual Article Setup */
+/* List Grid Setup */
+.grid {
+  width: 660px;
+  margin: 0 auto;
+}
+.grid li {
+  float: left;
+  width: 200px;
+  padding: 10px;
+}
+
+/* End List Grid Setup */

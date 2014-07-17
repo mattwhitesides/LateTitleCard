@@ -19,7 +19,7 @@
 
 {# First, grab the articles from the CMS #}
 {% set items = get('articles','movies', 'podcast', 'videogames', 'tv') %}
-{% set heroItems = get('movies', 'podcast', 'videogames', 'tv') %}
+{% set heroItems = get('articles','movies', 'podcast', 'videogames', 'tv') %}
 {% set types = getTypes() %} 
  
 {% block content %} 
@@ -53,6 +53,7 @@
               </h2>
               <h4>
                 {{ heroItem.deck }}
+                {{ heroItem.summary_text }}
               </h4>
             </a>
           </div>
@@ -75,7 +76,7 @@
                     {% if item._type|lower === 'movies'  %}
                       Movie Review: {{ item.name }}
                     {% elseif item._type|lower === 'articles' %}
-                      Breaking News: {{ item.name }}
+                      News: {{ item.name }}
                     {% elseif item._type|lower === 'tv' %}
                       Television Review: {{ item.name }}
                     {% elseif item._type|lower === 'podcast' %}
