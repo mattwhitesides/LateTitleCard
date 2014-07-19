@@ -10,11 +10,14 @@
   <div class="not-fullscreen background parallax not-overflow" id="articleHero" style="background-image:url('{{ item.header_image|imageSize(2048) }}');" data-img-width="2048" data-img-height="1556">
     <div id="navBar">
       <ul>
-        <li><a href="/">Home</a></li>
         {% for type in types %}
+          {% if loop.index == 4 %}
+            <li><a href="/"><img src="../../static/images/lateTitleCardWords.png"></a>                
+          {% endif %}
           <li><a href="{{ url(type) }}">{{ type.name }}</a></li>
         {% endfor %}  
-      </ul>          
+        <li><a href="/about/">About</a></li>
+      </ul>         
     </div>
     <div class="content-a">
       <div class="content-b">

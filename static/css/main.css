@@ -71,11 +71,26 @@ body a {
   text-align: center;
 }
 
+.large {
+  font-size: 100px;
+}
+
 .center {
   margin: 0 auto;
 }
 
+.imgCenter {
+  position: relative;
+  left: 50%;
+  width: 800px;
+  height: 500px;
+  margin-left: -400px;
+}
+
 /* Begin Navbar CSS */
+#navBar {
+  margin: 0 auto;
+}
 #navBar ul {
   list-style-type: none;
   text-align: center;
@@ -87,10 +102,14 @@ body a {
 #navBar ul li a:hover {
   color: white 0.75;
   background-color: white;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px;
+  background: -moz-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 0.35) 0%, transparent 75%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 75%, color-stop(0%, rgba(255, 255, 255, 0.35)), color-stop(75%, transparent));
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 0.35) 0%, transparent 75%);
+  background: -o-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 0.35) 0%, transparent 75%);
+  background: -ms-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 0.35) 0%, transparent 75%);
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.35) 0%, transparent 75%);
+}
+#navBar ul li img:hover {
   background: -moz-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 0.35) 0%, transparent 75%);
   background: -webkit-gradient(radial, center center, 0px, center center, 75%, color-stop(0%, rgba(255, 255, 255, 0.35)), color-stop(75%, transparent));
   background: -webkit-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 0.35) 0%, transparent 75%);
@@ -102,6 +121,12 @@ body a {
   text-decoration: none;
   padding: 0.9em 1em;
   color: white;
+}
+#navBar ul li a img {
+  max-height: 75px;
+  max-width: 100px;
+  height: auto;
+  width: auto;
 }
 
 .contentList a:hover {
@@ -211,6 +236,7 @@ body, hr.horizontalSeparator:after {
   position: relative;
   background-size: cover;
   height: 220px;
+  border: 1px solid black;
   -webkit-animation: unDimAnimation 2s;
   animation: unDimAnimation 2s;
 }
@@ -341,11 +367,21 @@ article {
 .grid {
   width: 660px;
   margin: 0 auto;
+  display: block;
 }
 .grid li {
   float: left;
+  height: 250px;
   width: 200px;
   padding: 10px;
 }
 
 /* End List Grid Setup */
+/* Clearfix */
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* End Clearfix */

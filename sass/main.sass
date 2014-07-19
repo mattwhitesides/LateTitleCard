@@ -84,12 +84,23 @@ body
 .centerText 
   text-align: center
 
+.large
+  font-size: 100px
+
 .center
   margin: 0 auto
+
+.imgCenter 
+  position: relative
+  left: 50%
+  width: 800px
+  height: 500px
+  margin-left: -400px /* Half the width */
 
 /* Begin Navbar CSS */
 
 #navBar
+  margin: 0 auto
   ul
     list-style-type: none 
     text-align: center
@@ -99,12 +110,18 @@ body
       a:hover 
         color: $globalColor .75
         background-color: $globalColor
-        @include border-radius(5px) 
         @include radialGradient
+      img:hover
+        @include radialGradient          
     li a
       text-decoration: none 
       padding: .9em 1em 
       color: $globalColor
+      img
+        max-height: 75px
+        max-width: 100px
+        height: auto
+        width: auto
 
 .contentList
   a:hover 
@@ -194,6 +211,8 @@ body, hr.horizontalSeparator:after
       position: relative
       background-size: cover
       height: 220px
+      border: 1px solid black
+
       @include unDimAnimationMixin($dimLength)
     li:hover
       @include dimAnimationMixin($dimLength)
@@ -310,10 +329,22 @@ article
 .grid
   width: 660px
   margin: 0 auto
+  display: block
   li
     float: left
+    height: 250px
     width: 200px
     padding: 10px
 
 
+
 /* End List Grid Setup */
+
+/* Clearfix */
+
+.group:after 
+  content: ""
+  display: table
+  clear: both
+
+/* End Clearfix */

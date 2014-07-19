@@ -11,9 +11,25 @@
 {% extends "templates/partials/base.html" %}
 {# This sets our page <title>. It will append this podcast's name to the site title defined in base.html #}
 {% block title %}{% parent %} - {{ item.name }}{% endblock %}
+
+{% set types = getTypes() %} 
+
 {% block content %}
-  <p><a href="/podcast/">View a list of all podcast</a></p>
-  <h1>{{ item.name }}</h1>
+
+  <div id="navBar">
+    <ul>
+      {% for type in types %}
+        {% if loop.index == 4 %}
+          <li><a href="/"><img src="../../static/images/lateTitleCardWords.png"></a>                
+        {% endif %}
+        <li><a href="{{ url(type) }}">{{ type.name }}</a></li>
+      {% endfor %}  
+      <li><a href="/about/">About</a></li>
+    </ul>          
+  </div>
+
+  <br>
+  
   <ul>
       <li>
         <strong>Name: </strong>
