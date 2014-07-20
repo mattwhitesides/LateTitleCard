@@ -3,22 +3,9 @@
 {# This sets our page <title>. It will append this movies's name to the site title defined in base.html #}
 {% block title %}{% parent %} - {{ item.name }}{% endblock %}
 
-{% set types = getTypes() %} 
-
 {% block content %}
 
   <div class="not-fullscreen background parallax not-overflow" id="articleHero" style="background-image:url('{{ item.header_image|imageSize(2048) }}');" data-img-width="2048" data-img-height="1556">
-    <div id="navBar">
-      <ul>
-        {% for type in types %}
-          {% if loop.index == 4 %}
-            <li><a href="/"><img src="../../static/images/ltcNavBar.png"></a>                
-          {% endif %}
-          <li><a href="{{ url(type) }}">{{ type.name }}</a></li>
-        {% endfor %}  
-        <li><a href="/about/">About</a></li>
-      </ul>          
-    </div>
     <div class="content-a">
       <div class="content-b">
         <h2>

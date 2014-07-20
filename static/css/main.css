@@ -109,22 +109,14 @@ body a {
   background: -ms-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 0.35) 0%, transparent 75%);
   background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.35) 0%, transparent 75%);
 }
-#navBar ul li img:hover {
-  background: -moz-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 0.35) 0%, transparent 75%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 75%, color-stop(0%, rgba(255, 255, 255, 0.35)), color-stop(75%, transparent));
-  background: -webkit-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 0.35) 0%, transparent 75%);
-  background: -o-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 0.35) 0%, transparent 75%);
-  background: -ms-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 0.35) 0%, transparent 75%);
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.35) 0%, transparent 75%);
-}
 #navBar ul li a {
   text-decoration: none;
   padding: 0.9em 1em;
   color: white;
 }
 #navBar ul li a img {
-  max-height: 75px;
-  max-width: 100px;
+  max-height: 65px;
+  max-width: 75px;
   height: auto;
   width: auto;
 }
@@ -237,6 +229,8 @@ body, hr.horizontalSeparator:after {
   background-size: cover;
   height: 220px;
   border: 1px solid black;
+  border-radius: 3px;
+  border-top-right-radius: 50px;
   -webkit-animation: unDimAnimation 2s;
   animation: unDimAnimation 2s;
 }

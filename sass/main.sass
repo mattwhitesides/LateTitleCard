@@ -90,6 +90,7 @@ body
 .center
   margin: 0 auto
 
+// For the about page
 .imgCenter 
   position: relative
   left: 50%
@@ -111,15 +112,13 @@ body
         color: $globalColor .75
         background-color: $globalColor
         @include radialGradient
-      img:hover
-        @include radialGradient          
     li a
       text-decoration: none 
       padding: .9em 1em 
       color: $globalColor
       img
-        max-height: 75px
-        max-width: 100px
+        max-height: 65px
+        max-width: 75px
         height: auto
         width: auto
 
@@ -212,6 +211,8 @@ body, hr.horizontalSeparator:after
       background-size: cover
       height: 220px
       border: 1px solid black
+      border-radius: 3px
+      border-top-right-radius: 50px
 
       @include unDimAnimationMixin($dimLength)
     li:hover
