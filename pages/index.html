@@ -83,8 +83,8 @@
     </div>
   </section>
 
-  <section class="smallHeroDivSect">
-    <div class="smallHeroDiv">
+  <section class="smallHeroDivSect" >
+    <div class="smallHeroDiv" id="smallHeroDiv2">
       <ul>
         {% for item in items|sort('publish_date', true)|slice(4,3) %} 
           <li style="background-image: url({{ item.small_header_image|imageSize(200) }})">

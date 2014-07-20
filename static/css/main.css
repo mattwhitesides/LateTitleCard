@@ -216,7 +216,7 @@ body, hr.horizontalSeparator:after {
 .smallHeroDivSect div .smallHeroUnits h4 {
   font-weight: 600;
   position: absolute;
-  padding: 0 0 4px 2px;
+  padding: 0 0 6px 5px;
   bottom: 0;
   left: 0;
 }
@@ -229,10 +229,14 @@ body, hr.horizontalSeparator:after {
   background-size: cover;
   height: 220px;
   border: 1px solid black;
-  border-radius: 3px;
-  border-top-right-radius: 50px;
   -webkit-animation: unDimAnimation 2s;
   animation: unDimAnimation 2s;
+}
+.smallHeroDivSect div li:nth-child(1) {
+  border-top-left-radius: 20px;
+}
+.smallHeroDivSect div li:nth-child(3) {
+  border-top-right-radius: 20px;
 }
 .smallHeroDivSect div li:hover {
   -webkit-animation: dimAnimation 2s;
@@ -255,7 +259,29 @@ body, hr.horizontalSeparator:after {
   bottom: 0;
 }
 
+#smallHeroDiv2 li:nth-child(1) {
+  border-top-left-radius: 0px;
+}
+#smallHeroDiv2 li:nth-child(3) {
+  border-top-right-radius: 0px;
+}
+#smallHeroDiv2 li:nth-child(1) {
+  border-bottom-left-radius: 20px;
+}
+#smallHeroDiv2 li:nth-child(3) {
+  border-bottom-right-radius: 20px;
+}
+
 /* End Hero Unit CSS */
+/* About Page */
+.logoReel img {
+  max-height: 50px;
+  max-width: 50px;
+  height: auto;
+  width: auto;
+  padding-right: 15px;
+}
+
 /* Body List */
 .bodyListImg {
   display: block;

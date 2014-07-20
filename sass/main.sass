@@ -6,6 +6,7 @@ $dimOpacity: .85
 $smallHeroDivWidth: 350px * 3
 $bodyFont: 'Montserrat', sans-serif
 $globalColor: white
+$smallHeroRadius: 20px
 
 @import url("http://fonts.googleapis.com/css?family=Montserrat")
 
@@ -199,7 +200,7 @@ body, hr.horizontalSeparator:after
       h4
         font-weight: 600
         position: absolute
-        padding: 0 0 4px 2px
+        padding: 0 0 6px 5px
         bottom: 0
         left: 0
     li
@@ -211,9 +212,10 @@ body, hr.horizontalSeparator:after
       background-size: cover
       height: 220px
       border: 1px solid black
-      border-radius: 3px
-      border-top-right-radius: 50px
-
+      &:nth-child(1)
+        border-top-left-radius: $smallHeroRadius
+      &:nth-child(3)
+        border-top-right-radius: $smallHeroRadius
       @include unDimAnimationMixin($dimLength)
     li:hover
       @include dimAnimationMixin($dimLength)
@@ -229,8 +231,28 @@ body, hr.horizontalSeparator:after
       height: 100%
       left: 0
       bottom: 0
+        
+#smallHeroDiv2
+  li
+    &:nth-child(1)
+      border-top-left-radius: 0px
+    &:nth-child(3)
+      border-top-right-radius: 0px  
+    &:nth-child(1)
+      border-bottom-left-radius: $smallHeroRadius
+    &:nth-child(3)
+      border-bottom-right-radius: $smallHeroRadius
 
 /* End Hero Unit CSS */
+
+/* About Page */
+.logoReel
+  img
+    max-height: 50px
+    max-width: 50px
+    height: auto
+    width: auto
+    padding-right: 15px
 
 /* Body List */
 
