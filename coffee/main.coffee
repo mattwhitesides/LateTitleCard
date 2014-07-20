@@ -1,21 +1,29 @@
 
 # send off the query
 printJson = (data) ->
-  # $(".jsonHolder").append "Found " + data.total
   movies = data.movies
-  # $("#jsonHolder").append "<tr>"
   $.each movies.slice(0,5), (index, movie) ->
     $("#jsonHolder tbody").append "<tr class='child'><td><img src=\"" + movie.posters.thumbnail + "\" /></td>" + "<td><h4>" + movie.title + "</h4></td><td>" + movie.release_dates.theater + "</td></tr>" 
+    return
+  return
+
+printJson2 = (data) ->
+  movies = data.movies
+  $.each movies.slice(0,5), (index, movie) ->
+    $("#jsonHolder2 tbody").append "<tr class='child'><td><img src=\"" + movie.posters.thumbnail + "\" /></td>" + "<td><h4>" + movie.title + "</h4></td><td>" + movie.release_dates.theater + "</td></tr>" 
     console.log("iteration: " + index)
     return
-  # $("#jsonHolder").append "</tr>"
   return
-  
+
 $(document).ready ->
   $.ajax
     url: "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/upcoming.json?apikey=k5xhfmsbbapb8pjj5bpfwvh4"
     dataType: "jsonp"
     success: printJson
+  $.ajax
+    url: "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=k5xhfmsbbapb8pjj5bpfwvh4&limit=3"
+    dataType: "jsonp"
+    success: printJson2    
   return
 
 

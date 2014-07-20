@@ -1,0 +1,13 @@
+{% set types = getTypes() %} 
+
+  <div id="navBar">
+    <ul>
+      {% for type in types %}
+        {% if loop.index == 4 %}
+          <li><a href="/"><img src="http://www.latetitlecard.com/static/images/ltcNavBar.png" id="logoImg"></a>                
+        {% endif %}
+        <li><a href="{{ url(type) }}">{{ type.name }}</a></li>
+      {% endfor %}  
+      <li><a href="/about/">About</a></li>
+    </ul>          
+  </div>
