@@ -121,7 +121,7 @@
 
     <div class="bodyList center">
       <ul>
-        {% for item in items|sort('publish_date', true)|slice(8,8) %} 
+        {% for item in items|sort('publish_date', true)|slice(8,5) %} 
           <li>
             <a href="{{ url(item) }}">
               <img src="{{ item.small_header_image|imageSize(200) }}" alt="{{ item.name }}" class="bodyListImg">

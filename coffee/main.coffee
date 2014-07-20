@@ -11,7 +11,6 @@ printJson2 = (data) ->
   movies = data.movies
   $.each movies.slice(0,5), (index, movie) ->
     $("#jsonHolder2 tbody").append "<tr class='child'><td><img src=\"" + movie.posters.thumbnail + "\" /></td>" + "<td><h4>" + movie.title + "</h4></td><td>" + movie.release_dates.theater + "</td></tr>" 
-    console.log("iteration: " + index)
     return
   return
 
