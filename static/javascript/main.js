@@ -1,5 +1,22 @@
 (function() {
-  var backgroundResize, fullscreenFix, parallaxPosition;
+  var backgroundResize, fullscreenFix, parallaxPosition, printJson;
+
+  printJson = function(data) {
+    var movies;
+    movies = data.movies;
+    $.each(movies.slice(0, 5), function(index, movie) {
+      $("#jsonHolder tbody").append("<tr class='child'><td><img src=\"" + movie.posters.thumbnail + "\" /></td>" + "<td><h4>" + movie.title + "</h4></td><td>" + movie.release_dates.theater + "</td></tr>");
+      console.log("iteration: " + index);
+    });
+  };
+
+  $(document).ready(function() {
+    $.ajax({
+      url: "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/upcoming.json?apikey=k5xhfmsbbapb8pjj5bpfwvh4",
+      dataType: "jsonp",
+      success: printJson
+    });
+  });
 
   fullscreenFix = function() {
     var h;

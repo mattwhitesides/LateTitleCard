@@ -117,35 +117,51 @@
   <hr class="horizontalSeparator" style="margin: 0 15%"></hr>
   <br>
 
-  <div class="bodyList center">
-    <ul>
-      {% for item in items|sort('publish_date', true)|slice(8,8) %} 
-        <li>
-          <a href="{{ url(item) }}">
-            <img src="{{ item.small_header_image|imageSize(200) }}" alt="{{ item.name }}" class="bodyListImg">
-            <div class="bodyListItems centerText">
-              <h3>
-                {% if item._type|lower === 'movies'  %}
-                  Movie Review: {{ item.name }}
-                {% elseif item._type|lower === 'articles' %}
-                  News: {{ item.name }}
-                {% elseif item._type|lower === 'tv' %}
-                  Television Review: {{ item.name }}
-                {% elseif item._type|lower === 'podcast' %}
-                  Podcast: {{ item.name }}
-                {% else %}
-                  Video Game Review: {{ item.name }}
-                {% endif %}
-              </h3>
-              <p>
-                {{ item.deck }}
-              </p>              
-            </div>  
-          </a>
-          <hr class="horizontalSeparator"></hr>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+  <section class="bodyContent group">
+
+    <div class="bodyList center">
+      <ul>
+        {% for item in items|sort('publish_date', true)|slice(8,8) %} 
+          <li>
+            <a href="{{ url(item) }}">
+              <img src="{{ item.small_header_image|imageSize(200) }}" alt="{{ item.name }}" class="bodyListImg">
+              <div class="bodyListItems centerText">
+                <h3>
+                  {% if item._type|lower === 'movies'  %}
+                    Movie Review: {{ item.name }}
+                  {% elseif item._type|lower === 'articles' %}
+                    News: {{ item.name }}
+                  {% elseif item._type|lower === 'tv' %}
+                    Television Review: {{ item.name }}
+                  {% elseif item._type|lower === 'podcast' %}
+                    Podcast: {{ item.name }}
+                  {% else %}
+                    Video Game Review: {{ item.name }}
+                  {% endif %}
+                </h3>
+                <p>
+                  {{ item.deck }}
+                </p>              
+              </div>  
+            </a>
+            <hr class="horizontalSeparator"></hr>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="upcommingDiv">
+      <h3>Upcomming Films:</h3>
+      <table id="jsonHolder">
+        <tr>
+          <th></th>
+          <th>Movie</th>
+          <th>Relase Date</th>
+        </tr>
+      </table>
+      <a href="http://www.rottentomatoes.com" target="_blank"><p>Data courtesy of Rottentomatoes.com</p></a>
+    </div>
+
+  </section>  
 
 {% endblock %} 
