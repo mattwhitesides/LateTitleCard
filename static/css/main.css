@@ -229,6 +229,7 @@ body, hr.horizontalSeparator:after {
   background-size: cover;
   height: 220px;
   border: 1px solid black;
+  box-shadow: 2px 2px 15px white;
   -webkit-animation: unDimAnimation 2s;
   animation: unDimAnimation 2s;
 }
