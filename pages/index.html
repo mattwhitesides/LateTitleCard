@@ -113,9 +113,7 @@
     </div>
   </section>
 
-  <br><br>
-  <hr class="horizontalSeparator" style="margin: 0 15%"></hr>
-  <br>
+  <br><br><hr class="horizontalSeparator" style="margin: 0 15%"></hr><br>
 
   <section class="bodyContent group">
 
@@ -144,15 +142,17 @@
                 </p>              
               </div>  
             </a>
-            <hr class="horizontalSeparator"></hr>
+            {% if not loop.last %}
+              <hr class="horizontalSeparator"></hr>
+            {% endif %}
           </li>
         {% endfor %}
       </ul>
     </div>
 
-    <div class="upcommingDiv">
-      <h3>Upcomming Films:</h3>
-      <table id="jsonHolder">
+    <div class="upcommingDiv group">
+      <h3>Opening This Weekend:</h3>
+      <table id="jsonHolderOpening">
         <tr>
           <th></th>
           <th>Movie</th>
@@ -161,7 +161,16 @@
       </table>
 
       <h3>Top Box Office:</h3>
-      <table id="jsonHolder2">
+      <table id="jsonHolderTop">
+        <tr>
+          <th></th>
+          <th>Movie</th>
+          <th>Relase Date</th>
+        </tr>
+      </table>
+
+      <h3>Upcomming:</h3>
+      <table id="jsonHolderUpcomming">
         <tr>
           <th></th>
           <th>Movie</th>
@@ -170,6 +179,10 @@
       </table>
       <a href="http://www.rottentomatoes.com" target="_blank"><p>Data courtesy of Rottentomatoes.com</p></a>
     </div>
+
+    <br><br><hr class="horizontalSeparator"></hr><br>
+
+
 
   </section>  
 

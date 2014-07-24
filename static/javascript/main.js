@@ -1,32 +1,45 @@
 (function() {
-  var backgroundResize, fullscreenFix, parallaxPosition, printJson, printJson2;
+  var backgroundResize, fullscreenFix, parallaxPosition, printJsonOpening, printJsonTop, printJsonUpcomming;
 
-  printJson = function(data) {
+  printJsonOpening = function(data) {
     var movies;
     movies = data.movies;
-    $.each(movies.slice(0, 5), function(index, movie) {
-      $("#jsonHolder tbody").append("<tr class='child'><td><img src=\"" + movie.posters.thumbnail + "\" /></td>" + "<td><h4>" + movie.title + "</h4></td><td>" + movie.release_dates.theater + "</td></tr>");
+    $.each(movies, function(index, movie) {
+      $("#jsonHolderOpening tbody").append("<tr class='child'><td><img src=\"" + movie.posters.thumbnail + "\" /></td>" + "<td><h4>" + movie.title + "</h4></td><td>" + movie.release_dates.theater + "</td></tr>");
     });
   };
 
-  printJson2 = function(data) {
+  printJsonTop = function(data) {
     var movies;
     movies = data.movies;
-    $.each(movies.slice(0, 5), function(index, movie) {
-      $("#jsonHolder2 tbody").append("<tr class='child'><td><img src=\"" + movie.posters.thumbnail + "\" /></td>" + "<td><h4>" + movie.title + "</h4></td><td>" + movie.release_dates.theater + "</td></tr>");
+    $.each(movies, function(index, movie) {
+      $("#jsonHolderTop tbody").append("<tr class='child'><td><img src=\"" + movie.posters.thumbnail + "\" /></td>" + "<td><h4>" + movie.title + "</h4></td><td>" + movie.release_dates.theater + "</td></tr>");
+    });
+  };
+
+  printJsonUpcomming = function(data) {
+    var movies;
+    movies = data.movies.slice(0, 3);
+    $.each(movies, function(index, movie) {
+      $("#jsonHolderUpcomming tbody").append("<tr class='child'><td><img src=\"" + movie.posters.thumbnail + "\" /></td>" + "<td><h4>" + movie.title + "</h4></td><td>" + movie.release_dates.theater + "</td></tr>");
     });
   };
 
   $(document).ready(function() {
     $.ajax({
-      url: "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/upcoming.json?apikey=k5xhfmsbbapb8pjj5bpfwvh4",
+      url: "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/opening.json?apikey=k5xhfmsbbapb8pjj5bpfwvh4&limit=3",
       dataType: "jsonp",
-      success: printJson
+      success: printJsonOpening
     });
     $.ajax({
       url: "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=k5xhfmsbbapb8pjj5bpfwvh4&limit=3",
       dataType: "jsonp",
-      success: printJson2
+      success: printJsonTop
+    });
+    $.ajax({
+      url: "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/upcoming.json?apikey=k5xhfmsbbapb8pjj5bpfwvh4&limit=3",
+      dataType: "jsonp",
+      success: printJsonUpcomming
     });
   });
 
