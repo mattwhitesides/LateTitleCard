@@ -220,6 +220,10 @@ body, hr.horizontalSeparator:after {
   bottom: 0;
   left: 0;
 }
+.smallHeroDivSect div .imgContainer {
+  height: 100%;
+  width: 100%;
+}
 .smallHeroDivSect div li {
   background-position: center top;
   display: table-cell;

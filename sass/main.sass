@@ -35,6 +35,16 @@ $smallHeroRadius: 20px
   background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,.35) 0%,rgba(0,0,0,0) 75%)
   background: radial-gradient(ellipse at center, rgba(255,255,255,.35) 0%,rgba(0,0,0,0) 75%)
 
+@mixin rotateAndTranslate($deg,$x,$y)
+  -ms-transform: rotate($deg) translate($x,$y) /* IE 9 */
+  -webkit-transform: rotate($deg) translate($x,$y) /* Chrome, Safari, Opera */
+  transform: rotate($deg) translate($x,$y)
+
+@mixin translate($x,$y)
+  -ms-transform: translate($x,$y) /* IE 9 */
+  -webkit-transform: translate($x,$y) /* Chrome, Safari, Opera */
+  transform: translate($x,$y)
+
 @font-face 
   font-family: caviarDreams
   src: url($fontsAssetsPath + "basictitlefont.ttf")
@@ -203,6 +213,9 @@ body, hr.horizontalSeparator:after
         padding: 0 0 6px 5px
         bottom: 0
         left: 0
+    .imgContainer
+      height: 100%
+      width: 100%
     li
       background-position: center top
       display: table-cell
@@ -222,7 +235,6 @@ body, hr.horizontalSeparator:after
       @include dimAnimationMixin($dimLength)
     li:first-child:after
       background-position: left
-      // margin-left: 27% 
     li:before, li:after
       content: " "
       display: block
