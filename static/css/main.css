@@ -295,7 +295,7 @@ hr.horizontalSeparatorAlt {
 }
 
 .bodyListContent {
-  height: 210px;
+  height: 140px;
 }
 .bodyListContent:before {
   content: " ";
@@ -320,7 +320,8 @@ hr.horizontalSeparatorAlt {
   -ms-box-sizing: border-box;
   -o-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 0 20px;
+  padding: 0px 0px 0px 0px;
+  margin-top: -5%;
   overflow: hidden;
 }
 

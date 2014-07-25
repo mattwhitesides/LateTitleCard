@@ -124,7 +124,7 @@
       <h3 class="bodyListHeaders">Reviews:</h3>
       <hr class="horizontalSeparatorAlt">
       <ul>
-        {% for listReview in listReviews|sort('publish_date', true)|slice(8,3) %} 
+        {% for listReview in listReviews|sort('publish_date', true)|slice(2,4) %} 
           <li>
             <div class="bodyListContent">
               <a href="{{ url(listReview) }}">
@@ -153,7 +153,7 @@
 
         <h3 class="bodyListHeaders">News:</h3>
         <hr class="horizontalSeparatorAlt">
-        {% for listArticle in listNews|sort('publish_date', true)|slice(8,2) %} 
+        {% for listArticle in listNews|sort('publish_date', true)|slice(2,3) %} 
           <li>
             <div class="bodyListContent">
               <a href="{{ url(listArticle) }}">
