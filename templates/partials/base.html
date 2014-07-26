@@ -56,7 +56,21 @@
       {% include "templates/partials/footer.html" %}
 
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+      <script src="/static/javascript/swiftype/jquery.ba-hashchange.min.js"></script>
+      <script src="/static/javascript/swiftype/jquery.swiftype.search.js"></script>
 
+      {% block swift_js %}
+        <script>
+          // When using the input #search-form we added earlier, trigger the search event.
+          $("#search-form").submit(function(event) {
+            event.preventDefault();
+            var query = $("#st-search-input").val();
+            // When submitted, send the user to pages/search.html with the query string.
+            window.location = "/search/#stq=" + query;
+          });
+        </script>
+      {% endblock %}      
+      
       {# Put your JS in here and we'll minify it into one file. No CDN scripts. More info: #}
       {# http://www.webhook.com/docs/minify-your-js-and-css/ #}
 

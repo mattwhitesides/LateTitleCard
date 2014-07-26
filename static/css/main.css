@@ -466,6 +466,54 @@ article {
 }
 
 /* End List Grid Setup */
+/* Search */
+#st-results-container {
+  margin: 0 27%;
+}
+#st-results-container a {
+  display: block;
+  padding: 20px 0px;
+  line-height: 1.5;
+}
+#st-results-container a:hover {
+  background-color: rgba(19, 160, 255, 0.4);
+  text-decoration: none;
+  border-radius: 20px;
+}
+#st-results-container a h3 {
+  font-size: 150%;
+  color: white;
+}
+#st-results-container a p {
+  color: gray;
+}
+#st-results-container a em {
+  color: #13a0ff;
+  display: inline-block;
+  padding: 0 3px;
+}
+
+#st-search-input {
+  background: black;
+  border-radius: 5px;
+  border: 1px solid black;
+  outline: none;
+  height: 25px;
+  width: 25px;
+  display: inline;
+  transition: width 1.5s, box-shadow 1.5s, border 1.5s, background-image 1.5s;
+  background-image: url("../images/searchIcon.png");
+  background-repeat: no-repeat;
+  color: white;
+}
+#st-search-input:hover {
+  box-shadow: 0 0 5px #dddddd inset;
+  border: 1px solid #dddddd;
+  background-image: none;
+  width: 200px;
+}
+
+/* End Search */
 /* Clearfix */
 .group:after {
   content: "";

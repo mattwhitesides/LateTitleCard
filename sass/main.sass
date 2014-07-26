@@ -446,6 +446,48 @@ article
 
 /* End List Grid Setup */
 
+/* Search */
+
+#st-results-container 
+  margin: 0 27%
+  a 
+    display: block
+    padding: 20px 0px
+    line-height: 1.5
+    &:hover
+      background-color: rgba(19,160,255, .4)
+      text-decoration: none
+      border-radius: 20px
+    h3
+      font-size: 150%
+      color: white
+    p
+      color: gray
+    em
+      color: $globalBlueColor
+      display: inline-block
+      padding: 0 3px
+
+#st-search-input
+  background: black
+  border-radius: 5px
+  border: 1px solid black
+  outline: none 
+  height: 25px 
+  width: 25px
+  display: inline
+  transition: width 1.5s, box-shadow 1.5s, border 1.5s, background-image 1.5s
+  background-image: url("../images/searchIcon.png") 
+  background-repeat: no-repeat
+  color: white
+  &:hover
+    box-shadow: 0 0 5px #DDD inset
+    border: 1px solid #DDD
+    background-image: none
+    width: 200px
+
+/* End Search */
+
 /* Clearfix */
 
 .group:after 

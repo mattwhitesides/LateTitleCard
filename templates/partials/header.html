@@ -8,6 +8,11 @@
         {% endif %}
         <li><a href="{{ url(type) }}">{{ type.name }}</a></li>
       {% endfor %}  
-      <li><a href="/about/">About</a></li>
+<!--       <li><a href="/about/">About</a></li>
+ -->      <li>
+          <form id="search-form" class="search-form" style="display: inline">
+            <input type="text" id="st-search-input">
+          </form>
+      </li>
     </ul>          
   </div>
