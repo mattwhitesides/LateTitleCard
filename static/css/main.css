@@ -461,6 +461,9 @@ article {
   width: 200px;
   padding: 10px;
 }
+.grid a:hover {
+  color: #13a0ff;
+}
 
 /* End List Grid Setup */
 /* Clearfix */
