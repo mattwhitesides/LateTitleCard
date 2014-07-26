@@ -26,7 +26,7 @@
 {% block content %} 
 
   {% for heroItem in heroItems|sort('publish_date', true)|slice(0,1) %} 
-    <div class="fullscreen background parallax not-overflow" id="heroUnit" style="background-image:url('{{ heroItem.header_image|imageSize(2048) }}');" data-img-width="2048" data-img-height="1556">
+    <div class="not-fullscreen background parallax not-overflow" id="heroUnit" style="background-image:url('{{ heroItem.header_image|imageSize(2048) }}');" data-img-width="2048" data-img-height="1556">
       <div class="content-a">
         <div class="content-b">
           <a href="{{ url(heroItem) }}" class="heroText">
@@ -127,10 +127,10 @@
         {% for listReview in listReviews|sort('publish_date', true)|slice(2,4) %} 
           <li>
             <div class="bodyListContent">
-              <a href="{{ url(listReview) }}">
+              <a href="{{ url(listReview) }}" class="bodyListAnchor">
                 <img src="{{ listReview.small_header_image|imageSize(200) }}" alt="{{ listReview.name }}" class="bodyListImg">
                 <div class="bodyListItems centerText">
-                  <h3>
+                  <h4>
                     {% if listReview._type|lower === 'movies'  %}
                       {{ listReview.name }}
                     {% elseif listReview._type|lower === 'tv' %}
@@ -138,7 +138,7 @@
                     {% else %}
                       {{ listReview.name }}
                     {% endif %}
-                  </h3>
+                  </h4>
                   <p>
                     {{ listReview.deck }}
                   </p>              
@@ -156,18 +156,19 @@
         {% for listArticle in listNews|sort('publish_date', true)|slice(2,3) %} 
           <li>
             <div class="bodyListContent">
-              <a href="{{ url(listArticle) }}">
+              <a href="{{ url(listArticle) }}" class="bodyListAnchor">
                 <img src="{{ listArticle.small_header_image|imageSize(200) }}" alt="{{ listArticle.name }}" class="bodyListImg">
                 <div class="bodyListItems centerText">
-                  <h3>
+                  <h4>
                     {% if listArticle._type|lower === 'articles' %}
                       {{ listArticle.name }}
                     {% else %}
                       {{ listArticle.name }}
                     {% endif %}
-                  </h3>
+                  </h4>
                   <p>
                     {{ listArticle.deck }}
+                    {{ listArticle.summary_text|truncate(30) }}
                   </p>              
                 </div>  
               </a>

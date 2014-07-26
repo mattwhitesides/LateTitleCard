@@ -7,7 +7,7 @@ $smallHeroDivWidth: 350px * 3
 $bodyFont: 'Montserrat', sans-serif
 $globalColor: white
 $smallHeroRadius: 20px
-$globalBlueColor: rgba(19,160,255,.8)
+$globalBlueColor: rgb(19,160,255)
 
 @import url("http://fonts.googleapis.com/css?family=Montserrat")
 
@@ -124,8 +124,8 @@ body
     li
       display: inline
       a:hover 
-        color: $globalColor .75
-        background-color: $globalColor
+        // color: $globalColor .75
+        // background-color: $globalColor
         @include radialGradient
     li a
       padding: .9em 1em 
@@ -180,9 +180,12 @@ hr.horizontalSeparatorAlt
 
 /* Begin Hero Unit CSS */
 #heroUnit
+  height: 92%
   -webkit-box-shadow: inset 0 0 50px black, inset 0 0 50px black, inset 0 0 50px black
   -moz-box-shadow: inset 0 0 50px black, inset 0 0 50px black, inset 0 0 50px black
   box-shadow: inset 0 0 50px black, inset 0 0 50px black, inset 0 0 50px black
+  a:hover
+    color: $globalBlueColor
 
 .smallHeroDivSect
   border-top: 1px solid #000
@@ -219,6 +222,9 @@ hr.horizontalSeparatorAlt
         padding: 0 0 6px 5px
         bottom: 0
         left: 0
+      &:hover
+        h4
+          color: $globalBlueColor
     li
       background-position: center top
       display: table-cell
@@ -285,6 +291,7 @@ hr.horizontalSeparatorAlt
     position: relative
   hr
     padding-bottom: 10px
+
 .bodyListHeaders
   color: $globalBlueColor
   line-height: 0px  
@@ -301,6 +308,9 @@ hr.horizontalSeparatorAlt
     display: block
     height: 0
     overflow: hidden
+  &:hover
+    h4
+      color: $globalBlueColor
 
 .bodyListItems
   position: relative
@@ -316,15 +326,14 @@ hr.horizontalSeparatorAlt
   margin-top: -5%
   overflow: hidden
 
-
 .upcommingDiv
   width: 390px
-  padding-left: 5%
   float: right
   width: 300px
-  margin-right: 35%
+  margin-right: 38%
   h3
     padding-left: 0px
+    color: $globalBlueColor
   p
     font-size: 8px
     padding-left: 63px
@@ -334,12 +343,14 @@ hr.horizontalSeparatorAlt
   tr
     disply: table-cell
   th
-    border-bottom: 2px solid white
+    border-bottom: 2px solid $globalBlueColor
     border-left: 0px
     border-right: 0px
 
 .bodyContent
   margin-left: 25%
+  p
+    font-size: 14px
 
 /* End Body List */
 
