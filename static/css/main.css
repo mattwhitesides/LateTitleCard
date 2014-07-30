@@ -93,6 +93,7 @@ body a:hover {
 
 /* Begin Navbar CSS */
 #navBar {
+  width: auto;
   margin: 0 auto;
 }
 #navBar ul {
@@ -423,6 +424,13 @@ ul, ol, dl {
 /* Individual Article Setup */
 #articleHero {
   height: 75%;
+  -webkit-box-shadow: inset 0 0 50px black, inset 0 0 50px black, inset 0 0 50px black;
+  -moz-box-shadow: inset 0 0 50px black, inset 0 0 50px black, inset 0 0 50px black;
+  box-shadow: inset 0 0 50px black, inset 0 0 50px black, inset 0 0 50px black;
+}
+
+.listHero {
+  height: 50%;
   -webkit-box-shadow: inset 0 0 50px black, inset 0 0 50px black, inset 0 0 50px black;
   -moz-box-shadow: inset 0 0 50px black, inset 0 0 50px black, inset 0 0 50px black;
   box-shadow: inset 0 0 50px black, inset 0 0 50px black, inset 0 0 50px black;

@@ -31,6 +31,27 @@
 
   <h1 class="centerText">Video Games</h1>
 
+  {% for item in data %}
+    {% if loop.first %}
+      <div class="not-fullscreen background parallax not-overflow listHero" style="background-image:url('{{ item.header_image|imageSize(2048) }}');" data-img-width="2048" data-img-height="1556">
+        <div class="content-a">
+          <div class="content-b heroText">
+            <a href="{{ url(item) }}"> 
+              <h2>
+                {{ item.name }}
+              </h2>
+              <h3>
+                {{ item.summary_text }}
+              </h3>
+              <h4>{{ item.last_updated|date('F d Y') }}</h4>
+              <h4>By {{ item.author }}</h4>
+            </a>
+          </div>
+        </div>
+      </div>  
+    {% endif %}
+  {% endfor %}
+  
   <div class="grid group">
     <ul>
       {% for object in data %}
