@@ -26,7 +26,7 @@
 {% block content %} 
 
   {% for heroItem in heroItems|sort('publish_date', true)|slice(0,1) %} 
-    <div class="not-fullscreen background parallax not-overflow" id="heroUnit" style="background-image:url('{{ heroItem.header_image|imageSize(2048) }}');" data-img-width="2048" data-img-height="1556">
+    <div class="not-fullscreen background parallax not-overflow" id="heroUnit" style="background-image:url('{{ heroItem.header_image|imageSize(2048) }}');" data-img-width="1920" data-img-height="1080">
       <div class="content-a">
         <div class="content-b">
           <a href="{{ url(heroItem) }}" class="heroText">
