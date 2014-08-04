@@ -318,6 +318,9 @@ hr.horizontalSeparatorAlt {
 .bodyListContent:hover h4 {
   color: #13a0ff;
 }
+.bodyListContent img {
+  max-height: 140px;
+}
 
 .bodyListItems {
   position: relative;
