@@ -72,7 +72,7 @@ Function = wrap;
 module.exports.generator = function (config, logger, fileParser) {
 
   var self = this;
-  var firebaseUrl = 'webhook';
+  var firebaseUrl = config.get('webhook').firebase || 'webhook';
   var liveReloadPort = config.get('connect')['wh-server'].options.livereload;
   var websocket = null;
   var strictMode = false;
@@ -371,11 +371,45 @@ module.exports.generator = function (config, logger, fileParser) {
       wrench.rmdirSyncRecursive('.static-old');
 
       fs.unlinkSync('.reset.zip');
-      self.init(config.get('webhook').siteName, config.get('webhook').secretKey, true, function() {
+      self.init(config.get('webhook').siteName, config.get('webhook').secretKey, true, config.get('webhook').firebase, function() {
         callback();
       });
     });
   };
+
+  /**
+  * Extracts a local theme zip into the current generator directory
+  * @param zipUrl   The location of the zip file on disk
+  * @param callback The callback to call with the data from the theme
+  */
+  var extractPresetLocal = function(fileData, callback) {
+
+    fs.writeFileSync('.preset.zip', fileData, { encoding: 'base64' });
+    // Unzip into temporary file
+    var zip = new Zip('.preset.zip');
+
+    var entries = zip.getEntries();
+
+    entries.forEach(function(entry) {
+      var newName = entry.entryName.split('/').slice(1).join('/');
+      entry.entryName = newName;
+    });
+    zip.extractAllTo('.', true);
+
+    fs.unlinkSync('.preset.zip');
+
+    if(fs.existsSync('.preset-data.json')) {
+      var presetData = fileParser.readJSON('.preset-data.json');
+
+      fs.unlinkSync('.preset-data.json');
+      logger.ok('Done extracting.');
+      callback(presetData);
+
+    } else {
+      logger.ok('Done extracting.');
+      callback(null);
+    }
+  }
 
   /**
    * Downloads zip file and then sends the preset data for the theme to the CMS for installation
@@ -461,6 +495,7 @@ module.exports.generator = function (config, logger, fileParser) {
             // Here we try and abstract out the content type name from directory structure
             var baseName = path.basename(file, '.html');
             var newPath = path.dirname(file).replace('templates', './.build').split('/').slice(0,3).join('/');
+
             var pathParts = path.dirname(file).split('/');
             var objectName = pathParts[1];
             var items = data[objectName];
@@ -506,6 +541,14 @@ module.exports.generator = function (config, logger, fileParser) {
             if(baseName === 'list')
             {
 
+              if(typeInfo[objectName] && typeInfo[objectName].customUrls && typeInfo[objectName].customUrls.listUrl) {
+                var customPathParts = newPath.split('/');
+
+                customPathParts[2] = typeInfo[objectName].customUrls.listUrl;
+
+                newPath = customPathParts.join('/');
+              }
+
               newPath = newPath + '/index.html';
               writeTemplate(file, newPath);
 
@@ -513,6 +556,7 @@ module.exports.generator = function (config, logger, fileParser) {
               // Output should be path + id + '/index.html'
               // Should pass in object as 'item'
               baseNewPath = newPath;
+              var previewPath = baseNewPath.replace('./.build', './.build/_wh_previews');
 
               // TODO: Check to make sure file does not exist yet, and then adjust slug if it does? (how to handle in swig functions)
               for(var key in publishedItems)
@@ -523,7 +567,17 @@ module.exports.generator = function (config, logger, fileParser) {
                   overrideFile = 'templates/' + objectName + '/layouts/' + val[templateWidgetName];
                 }
 
-                newPath = baseNewPath + '/' + slug(val.name).toLowerCase() + '/index.html';
+                if(typeInfo[objectName] && typeInfo[objectName].customUrls && typeInfo[objectName].customUrls.individualUrl) {
+                  var customPathParts = baseNewPath.split('/');
+
+                  customPathParts[2] = utils.parseCustomUrl(typeInfo[objectName].customUrls.individualUrl, val);
+
+                  baseNewPath = customPathParts.join('/');
+                }
+
+                var tmpSlug = val.slug ? val.slug : slug(val.name).toLowerCase();
+
+                newPath = baseNewPath + '/' + tmpSlug + '/index.html';
 
                 if(fs.existsSync(overrideFile)) {
                   writeTemplate(overrideFile, newPath, { item: val });
@@ -532,7 +586,6 @@ module.exports.generator = function (config, logger, fileParser) {
                 }
               }
 
-              var previewPath = baseNewPath.replace('./.build', './.build/_wh_previews');
               for(var key in items)
               {
                 var val = items[key];
@@ -559,7 +612,16 @@ module.exports.generator = function (config, logger, fileParser) {
               {
                 var val = publishedItems[key];
 
-                newPath = baseNewPath + '/' + slug(val.name).toLowerCase() + '/' + middlePathName + '/index.html';
+                if(typeInfo[objectName] && typeInfo[objectName].customUrls && typeInfo[objectName].customUrls.individualUrl) {
+                  var customPathParts = baseNewPath.split('/');
+
+                  customPathParts[2] = utils.parseCustomUrl(typeInfo[objectName].customUrls.individualUrl, val);
+
+                  baseNewPath = customPathParts.join('/');
+                }
+
+                var tmpSlug = val.slug ? val.slug : slug(val.name).toLowerCase();
+                newPath = baseNewPath + '/' + tmpSlug + '/' + middlePathName + '/index.html';
                 writeTemplate(file, newPath, { item: val });
               }
             }
@@ -854,7 +916,7 @@ module.exports.generator = function (config, logger, fileParser) {
         } else if (message === 'supported_messages') {
           sock.send('done:' + JSON.stringify([
             'scaffolding', 'scaffolding_force', 'check_scaffolding', 'reset_files', 'supported_messages',
-            'push', 'build', 'preset', 'layouts'
+            'push', 'build', 'preset', 'layouts', 'preset_localv2'
           ]));
         } else if (message === 'push') {
           pushSite(function(error) {
@@ -866,6 +928,24 @@ module.exports.generator = function (config, logger, fileParser) {
           });
         } else if (message === 'build') {
           buildQueue.push({}, function(err) {});
+        } else if (message.indexOf('preset_local:') === 0) {
+          var fileData = message.replace('preset_local:', '');
+
+          if(!fileData) {
+            sock.send('done');
+            return;
+          }
+
+          extractPresetLocal(fileData, function(data) {
+            var command = spawn('npm', ['install'], {
+              stdio: 'inherit',
+              cwd: '.'
+            });
+
+            command.on('close', function() {
+              sock.send('done:' + JSON.stringify(data));
+            });
+          });
         } else if (message.indexOf('preset:') === 0) {
           var url = message.replace('preset:', '');
           if(!url) {
@@ -897,11 +977,15 @@ module.exports.generator = function (config, logger, fileParser) {
    * @param  {Boolean}   copyCms   True if the CMS should be overwritten, false otherwise
    * @param  {Function}  done      Callback to call when operation is done
    */
-  this.init = function(sitename, secretkey, copyCms, done) {
+  this.init = function(sitename, secretkey, copyCms, firebase, done) {
     var confFile = fs.readFileSync('./libs/.firebase.conf.jst');
 
+    if(firebase) {
+      confFile = fs.readFileSync('./libs/.firebase-custom.conf.jst');
+    }
+
     // TODO: Grab bucket information from server eventually, for now just use the site name
-    var templated = _.template(confFile, { secretKey: secretkey, siteName: sitename });
+    var templated = _.template(confFile, { secretKey: secretkey, siteName: sitename, firebase: firebase });
 
     fs.writeFileSync('./.firebase.conf', templated);
 

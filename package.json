@@ -23,7 +23,7 @@
     "grunt-simple-watch": "~0.1.2",
     "lodash": "~2.4.1",
     "glob": "~3.2.8",
-    "tiny-lr": "0.0.5",
+    "tiny-lr": "~0.1.0",
     "wrench": "~1.5.4",
     "swig": "~1.4.1",
     "ws": "~0.4.31",
@@ -44,6 +44,7 @@
     "grunt-contrib-sass": "~0.7.3",
     "grunt-contrib-less": "~0.11.2",
     "grunt-contrib-coffee": "~0.4.0",
-    "MD5": "~1.2.1"
+    "MD5": "~1.2.1",
+    "moment": "~2.8.1"
   }
 }

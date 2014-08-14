@@ -48,7 +48,7 @@ body {
   height: auto;
   min-height: 100%;
   background-color: black;
-  color: white;
+  color: rgba(255, 255, 255, 0.87);
 }
 body h1, body h2, body h3, body h4, body p, body li {
   font-family: "Montserrat", sans-serif;
@@ -59,7 +59,7 @@ body h1 {
   font-weight: 100;
 }
 body a {
-  color: white;
+  color: rgba(255, 255, 255, 0.87);
   opacity: 0.9;
   text-decoration: none;
 }
@@ -114,7 +114,7 @@ body a:hover {
 }
 #navBar ul li a {
   padding: 0.9em 1em;
-  color: white;
+  color: rgba(255, 255, 255, 0.87);
 }
 #navBar ul li a img {
   max-height: 65px;
@@ -124,7 +124,7 @@ body a:hover {
 }
 
 .contentList a:hover {
-  color: white;
+  color: rgba(255, 255, 255, 0.87);
   background-color: white;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -456,7 +456,15 @@ ul, ol, dl {
 }
 
 article {
-  margin: 0 25%;
+  margin: 0 15%;
+}
+article p, article blockquote {
+  margin: 0 auto;
+  max-width: 600px;
+  font-size: 16px;
+}
+article p {
+  padding-bottom: 12px;
 }
 
 /* End Individual Article Setup */

@@ -61,6 +61,20 @@
     Masonite melancholy pop shove-it crail slide. Shoe Goo Christ air wall ride rail slide backside. Nose yeah skater kidney. Pogo fakie pump half-flip. Transfer bank Rob Dyrdek Primo slide frigid air. Heel flip regular footed stalefish 270. Crail slide face plant manual Sidewalk Surfer bluntslide. Thrasher full pipe bone air pressure flip heel flip. Blind dude rip grip gap pool. Rip grip concave camel back bank. Camel back smith grind kick-nose World Industries locals.
   </div>
 
+  <div id="videoContainer">
+<!--     <div id="videoText">
+      50-50 Steve Rocco smith grind kidney wall ride. Berm pivot wall ride frontside Randy Ruiz. Frontside crooked grind Rat Bones risers tic-tac. Launch ramp soul skate deck coffin. Invert hurricane vert S.K.A.T.E. camel back. Tailslide helipop wax nosepicker. Pogo crail grab soul skate baseplate Bam Margera. China Banks kick-nose pop shove-it bluntslide bruised heel. Speed wobbles mongo noseblunt slide Primo slide. 360 skate or die stalefish half-flip. Helipop ho-ho method air ollie north. Impossible tail Shawn Dutton frontside air nose blunt. Casper slide regular footed Shorty's body varial slap maxwell.
+
+      Masonite melancholy pop shove-it crail slide. Shoe Goo Christ air wall ride rail slide backside. Nose yeah skater kidney. Pogo fakie pump half-flip. Transfer bank Rob Dyrdek Primo slide frigid air. Heel flip regular footed stalefish 270. Crail slide face plant manual Sidewalk Surfer bluntslide. Thrasher full pipe bone air pressure flip heel flip. Blind dude rip grip    gap pool. Rip grip concave camel back bank. Camel back smith grind kick-nose World Industries locals.
+    </div> -->
+
+    <video loop autoplay muted preload=”auto” id="textVideo" controls>
+        <source src="../static/video/guardiansClip.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+  
+  </div>
+  
   <style type="text/css">
     .customArticle {
       padding: 10px 0 10px 0;
@@ -75,6 +89,45 @@
       margin: 0 50% 0 30px;
       font-size: 20px;
     }
+    #videoText {
+      position:absolute;
+      background-color: orange;
+      float:left;
+        width: 100%;
+        min-height:370px;
+        background-color:#000;
+        z-index:300000;
+    }
+    #videoContainer {
+      width: 100%;
+      height: auto;
+    }
   </style>
+
+  <script type="text/javascript">
+    $(function() {
+
+     var windowWidth = $(window).width();
+     var video = document.getElementsByTagName("textVideo")[0];
+      
+     var context = canvas.getContext("2d");
+
+     console.log(video);
+
+     video.width = windowWidth;
+     video.height = (windowWidth * .5625);
+
+      context.font = 'bold 10pt Calibri';
+      context.fillText('Hello World!', 150, 100);
+      context.font = 'italic 40pt Times Roman';
+      context.fillStyle = 'blue';
+      context.fillText('Hello World!', 200, 150);
+      context.font = '60pt Calibri';
+      context.lineWidth = 4;
+      context.strokeStyle = 'blue';
+      context.strokeText('Hello World!', 70, 70);
+
+    });
+  </script>
 
 {% endblock %}
