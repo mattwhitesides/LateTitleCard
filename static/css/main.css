@@ -456,15 +456,7 @@ ul, ol, dl {
 }
 
 article {
-  margin: 0 15%;
-}
-article p, article blockquote {
-  margin: 0 auto;
-  max-width: 600px;
-  font-size: 16px;
-}
-article p {
-  padding-bottom: 12px;
+  margin: 0 25%;
 }
 
 /* End Individual Article Setup */

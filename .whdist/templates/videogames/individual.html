@@ -1,0 +1,31 @@
+{% extends "templates/partials/base.html" %}
+
+{# This sets our page <title>. It will append this movies's name to the site title defined in base.html #}
+{% block title %}{% parent %} - {{ item.name }}{% endblock %}
+
+{% block content %}
+
+  <div class="not-fullscreen background parallax not-overflow" id="articleHero" style="background-image:url('{{ item.header_image|imageSize(2048) }}');" data-img-width="1920" data-img-height="1080">
+    <div class="content-a">
+      <div class="content-b">
+        <h2>
+          Review: {{ item.name }}
+        </h2>
+        <h3>
+          {{ item.deck }}
+        </h3>
+        <h4>{{ item.last_updated|date('F d Y') }}</h4>
+        <h4>By {{ item.author }}</h4>
+        <div class="circle">
+          <h2>
+            {{ item.rating }}/5
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <article>
+    {{ item.review|safe }}
+  </article>
+{% endblock %}
