@@ -9,7 +9,7 @@
       <link>http://www.latetitlecard.com/</link>
         <language>en-us</language>
         <copyright>LateTitleCard</copyright>
-        <itunes:subtitle></itunes:subtitle>
+        <itunes:subtitle>A podcast about TV, Film and Video Games</itunes:subtitle>
         <itunes:author>Matthew Whitesides</itunes:author>
         <itunes:summary>
           Late Title Card dot com is a website and podcast about the finer things in life. Finer things like Movies, Video Games, Tech, Comics and whatever else is on our mind
@@ -22,14 +22,9 @@
           <itunes:email>mattwhitesides@latetitlecard.com</itunes:email>
         </itunes:owner>
         <itunes:image href="http://www.latetitlecard.com/static/images/ltcPodcastCoverArt.png"/>
-        <itunes:explicit>{{ podcast.explicit }}</itunes:explicit>
+        <itunes:explicit>no</itunes:explicit>
         {# Add your itunes category information here #}
-          <itunes:category text="TV &amp; Film">
-          <itunes:category text="Video Games" />
-          </itunes:category>
-          <itunes:category text="Technology">
-          <itunes:category text="Gadgets" />
-          </itunes:category> 
+          <itunes:category text="TV &amp; Film"/>
         <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="{{ getCurrentUrl() }}" rel="self" type="application/rss+xml"/>
         {% for episode in episodes %}
           <item>
@@ -37,13 +32,13 @@
             <itunes:author>Tyler Hall</itunes:author>
             <itunes:subtitle>{{ episode.deck }}</itunes:subtitle>
             <itunes:summary>{{ episode.deck }}</itunes:summary>
-            <itunes:image href="{{episode.header_image}}" />
-            <enclosure url="{{ getSetting('site_url') }}{{ episode.audio_file.url }}"
-              length="{{Math.floor(episode.audio_file.duration) }}" type="{{ episode.audio_file.type }}"/>
-            <guid>{{ getSetting('site_url') }}{{ episode.audio_file.url }}</guid>
+            <itunes:image href="{{episode.header_image|imageSize(1400)}}" />
+            <enclosure url="http://www.latetitlecard.com{{ episode.audio_file.url }}" length="{{Math.floor(episode.audio_file.duration) }}" type="{{ episode.audio_file.type }}"/>
+            <guid>http://www.latetitlecard.com{{ episode.audio_file.url }}</guid>
             <pubDate>{{ episode.publish_date|date("D, d M Y H:i:s O") }}</pubDate>
             {# Calculate duration in hours:minutes:seconds. #}
             <itunes:duration>{{ episode.audio_file.duration|duration }}</itunes:duration>
+            <itunes:keywords>Tv, Film, Video Games, Reviews</itunes:keywords>
           </item>
         {% endfor %}
     </channel>
