@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+{% set episodes = get('podcast')%}
+{% set episodes = episodes|sort('publish_date', true)%}
+
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:itunesu="http://www.itunesu.com/feed" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" >
+    <channel>
+      <title>Late Title Card Podcast</title>
+      <link>http://www.latetitlecard.com/</link>
+        <language>en-us</language>
+        <copyright>LateTitleCard</copyright>
+        <itunes:subtitle></itunes:subtitle>
+        <itunes:author>Matthew Whitesides</itunes:author>
+        <itunes:summary>
+          Late Title Card dot com is a website and podcast about the finer things in life. Finer things like Movies, Video Games, Tech, Comics and whatever else is on our mind
+        </itunes:summary>
+        <description>
+          Late Title Card dot com is a website and podcast about the finer things in life. Finer things like Movies, Video Games, Tech, Comics and whatever else is on our mind
+        </description>
+        <itunes:owner>
+          <itunes:name>Matthew Whitesides</itunes:name>
+          <itunes:email>mattwhitesides@latetitlecard.com</itunes:email>
+        </itunes:owner>
+        <itunes:image href="http://www.latetitlecard.com/static/images/ltcPodcastCoverArt.png"/>
+        <itunes:explicit>{{ podcast.explicit }}</itunes:explicit>
+        {# Add your itunes category information here #}
+        {#  <itunes:category text="TV &amp; Film">
+            <itunes:category text="Video Games" />
+            </itunes:category>
+            <itunes:category text="Technology">
+            <itunes:category text="Gadgets" />
+            </itunes:category> #}
+        <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="{{ getCurrentUrl() }}" rel="self" type="application/rss+xml"/>
+        {% for episode in episodes %}
+          <item>
+              <title>{{ episode.name }}</title>
+              <itunes:author>Tyler Hall</itunes:author>
+              <itunes:subtitle>{{ episode.deck }}</itunes:subtitle>
+              <itunes:summary>{{ episode.deck }}</itunes:summary>
+              <itunes:image href="{{episode.header_image}}" />
+              <enclosure url="{{ getSetting('site_url') }}{{ episode.audio_file.url }}"
+                length="{{Math.floor(episode.audio_file.duration) }}" type="{{ episode.audio_file.type }}"/>
+              <guid>{{ getSetting('site_url') }}{{ episode.audio_file.url }}</guid>
+              <pubDate>{{ episode.publish_date|date("D, d M Y H:i:s O") }}</pubDate>
+              {# Calculate duration in hours:minutes:seconds. #}
+              <itunes:duration>{{ episode.audio_file.duration|duration }}</itunes:duration>
+          </item>
+        {% endfor %}
+    </channel>
+</rss>
