@@ -24,26 +24,26 @@
         <itunes:image href="http://www.latetitlecard.com/static/images/ltcPodcastCoverArt.png"/>
         <itunes:explicit>{{ podcast.explicit }}</itunes:explicit>
         {# Add your itunes category information here #}
-        {#  <itunes:category text="TV &amp; Film">
-            <itunes:category text="Video Games" />
-            </itunes:category>
-            <itunes:category text="Technology">
-            <itunes:category text="Gadgets" />
-            </itunes:category> #}
+          <itunes:category text="TV &amp; Film">
+          <itunes:category text="Video Games" />
+          </itunes:category>
+          <itunes:category text="Technology">
+          <itunes:category text="Gadgets" />
+          </itunes:category> 
         <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="{{ getCurrentUrl() }}" rel="self" type="application/rss+xml"/>
         {% for episode in episodes %}
           <item>
-              <title>{{ episode.name }}</title>
-              <itunes:author>Tyler Hall</itunes:author>
-              <itunes:subtitle>{{ episode.deck }}</itunes:subtitle>
-              <itunes:summary>{{ episode.deck }}</itunes:summary>
-              <itunes:image href="{{episode.header_image}}" />
-              <enclosure url="{{ getSetting('site_url') }}{{ episode.audio_file.url }}"
-                length="{{Math.floor(episode.audio_file.duration) }}" type="{{ episode.audio_file.type }}"/>
-              <guid>{{ getSetting('site_url') }}{{ episode.audio_file.url }}</guid>
-              <pubDate>{{ episode.publish_date|date("D, d M Y H:i:s O") }}</pubDate>
-              {# Calculate duration in hours:minutes:seconds. #}
-              <itunes:duration>{{ episode.audio_file.duration|duration }}</itunes:duration>
+            <title>{{ episode.name }}</title>
+            <itunes:author>Tyler Hall</itunes:author>
+            <itunes:subtitle>{{ episode.deck }}</itunes:subtitle>
+            <itunes:summary>{{ episode.deck }}</itunes:summary>
+            <itunes:image href="{{episode.header_image}}" />
+            <enclosure url="{{ getSetting('site_url') }}{{ episode.audio_file.url }}"
+              length="{{Math.floor(episode.audio_file.duration) }}" type="{{ episode.audio_file.type }}"/>
+            <guid>{{ getSetting('site_url') }}{{ episode.audio_file.url }}</guid>
+            <pubDate>{{ episode.publish_date|date("D, d M Y H:i:s O") }}</pubDate>
+            {# Calculate duration in hours:minutes:seconds. #}
+            <itunes:duration>{{ episode.audio_file.duration|duration }}</itunes:duration>
           </item>
         {% endfor %}
     </channel>
