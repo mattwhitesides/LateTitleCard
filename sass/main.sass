@@ -607,23 +607,26 @@ $padding: 20px
 /* Podcast Page */
 
 .pCastAudio
-  padding-top: 20px
+  padding-top: 10px
   height: 50px
   width: 300px
+  box-shadow: 0px 0px 10px $globalBlueColor
+  @include border-radius(15px)
 
 .pCastItems
   padding-top: 30px
   text-align: center
 
 .innerColDiv
-  width: 50%
-  height: 275px
+  width: 200px
+  height: 200px
   padding-bottom: 50px
   margin: 0 auto
-  @include border-radius(5px)
+  @include border-radius(25px)
   transition: width 1s, background 1s
   &:hover
-    width: 55%
+    width: 225px
+    color: $globalBlueColor
 
 $alpha: .6
 
