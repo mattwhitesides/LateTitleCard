@@ -257,7 +257,12 @@ hr.horizontalSeparatorAlt
       height: 100%
       left: 0
       bottom: 0
-        
+
+.heroText
+  a
+    &:hover
+      color: $globalBlueColor
+
 // #smallHeroDiv2
 //   li
 //     &:nth-child(1)
@@ -456,7 +461,7 @@ article
 
 .listContent
   h2
-    padding-top: 88px
+    padding-top: 50px
   &:hover
     h2
       color: $globalBlueColor
@@ -466,41 +471,26 @@ article
   -moz-box-shadow: 1px 1px 8px grey
   box-shadow: 1px 1px 8px grey
 
-.listContentItems-group1
+// .listContentItems-group1-1
+//   transition: width 1s
+//   height: 175px
+//   width: 100%
+//   &:hover
+//     width: 105%
+
+// .listContentItems-group1-2
+//   transition: width 1s
+//   height: 175px
+//   width: 75%
+//   &:hover
+//     width: 80%
+
+[class*='listContentItems-group1-']
   transition: width 1s
-  height: 200px
+  height: 125px
   width: 100%
   &:hover
-    width: 105%
-
-.listContentItems-group2
-  transition: width 1s
-  height: 200px
-  width: 75%
-  &:hover
-    width: 80%
-
-.listContentItems-group3
-  transition: width 1s
-  height: 200px
-  width: 50%  
-  &:hover
-    width: 55%
-
-.listContentItems-group4
-  transition: width 1s
-  height: 200px
-  width: 100%
-  &:hover
-    width: 105%
-
-.listContentItems-group5
-  transition: width 1s
-  height: 200px
-  width: 100%
-  &:hover
-    width: 105%
-
+    width: 90%
 
 /* End List Grid Setup */
 

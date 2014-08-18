@@ -263,6 +263,10 @@ hr.horizontalSeparatorAlt {
   bottom: 0;
 }
 
+.heroText a:hover {
+  color: #13a0ff;
+}
+
 /* End Hero Unit CSS */
 /* About Page */
 .logoReel img {
@@ -475,7 +479,7 @@ article {
 }
 
 .listContent h2 {
-  padding-top: 88px;
+  padding-top: 50px;
 }
 .listContent:hover h2 {
   color: #13a0ff;
@@ -487,49 +491,13 @@ article {
   box-shadow: 1px 1px 8px gray;
 }
 
-.listContentItems-group1 {
+[class*='listContentItems-group1-'] {
   transition: width 1s;
-  height: 200px;
+  height: 125px;
   width: 100%;
 }
-.listContentItems-group1:hover {
-  width: 105%;
-}
-
-.listContentItems-group2 {
-  transition: width 1s;
-  height: 200px;
-  width: 75%;
-}
-.listContentItems-group2:hover {
-  width: 80%;
-}
-
-.listContentItems-group3 {
-  transition: width 1s;
-  height: 200px;
-  width: 50%;
-}
-.listContentItems-group3:hover {
-  width: 55%;
-}
-
-.listContentItems-group4 {
-  transition: width 1s;
-  height: 200px;
-  width: 100%;
-}
-.listContentItems-group4:hover {
-  width: 105%;
-}
-
-.listContentItems-group5 {
-  transition: width 1s;
-  height: 200px;
-  width: 100%;
-}
-.listContentItems-group5:hover {
-  width: 105%;
+[class*='listContentItems-group1-']:hover {
+  width: 90%;
 }
 
 /* End List Grid Setup */
