@@ -239,7 +239,6 @@ hr.horizontalSeparatorAlt
       background-position: center top
       display: table-cell
       margin: 0
-      padding: 0
       position: relative
       background-size: cover
       height: 220px
@@ -408,7 +407,6 @@ html, body
 
 ul, ol, dl
   margin: 0
-  padding: 0
   list-style: none
   list-style-image: none
 /* THIS BETTER STILL BE THE BOTTOM */
@@ -458,7 +456,6 @@ article
     float: left
     height: 250px
     width: 200px
-    padding: 10px
   a:hover
     color: $globalBlueColor
 
@@ -534,7 +531,7 @@ video
 
 $padding: 20px
 
-.grid
+.grid2
   background: white
   margin: 0 0 $padding 0
   &:after
@@ -545,7 +542,7 @@ $padding: 20px
 [class*='col-']
   float: left
   padding-right: $padding
-  .grid &:last-of-type
+  .grid2 &:last-of-type
     padding-right: 0
 
 .col-2-3
@@ -589,16 +586,20 @@ $alpha: .6
   background: rgba(233,64,90,$alpha)
   background-image: url('http://www.latetitlecard.com/static/images/downloadIcon.png')
   background-size: cover
-
+  a:hover
+    color: $globalBlueColor
 .blue
-
   background: rgba(0,171,234,$alpha)
   background-image: url('http://www.latetitlecard.com/static/images/iTunesLogo.png')
   background-size: cover
+  a:hover
+    color: $globalBlueColor
 
 .orange
   background: rgba(250,186,45,$alpha)
   background-image: url('http://www.latetitlecard.com/static/images/rssLogo.png')
   background-size: cover
+  a:hover
+    color: $globalBlueColor
 
 /* End Podcast Page */

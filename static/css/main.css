@@ -236,7 +236,6 @@ hr.horizontalSeparatorAlt {
   background-position: center top;
   display: table-cell;
   margin: 0;
-  padding: 0;
   position: relative;
   background-size: cover;
   height: 220px;
@@ -418,7 +417,6 @@ html, body {
 
 ul, ol, dl {
   margin: 0;
-  padding: 0;
   list-style: none;
   list-style-image: none;
 }
@@ -470,7 +468,6 @@ article {
   float: left;
   height: 250px;
   width: 200px;
-  padding: 10px;
 }
 .grid a:hover {
   color: #13a0ff;
@@ -552,11 +549,11 @@ video {
   box-sizing: border-box;
 }
 
-.grid {
+.grid2 {
   background: white;
   margin: 0 0 20px 0;
 }
-.grid:after {
+.grid2:after {
   content: "";
   display: table;
   clear: both;
@@ -566,7 +563,7 @@ video {
   float: left;
   padding-right: 20px;
 }
-.grid [class*='col-']:last-of-type {
+.grid2 [class*='col-']:last-of-type {
   padding-right: 0;
 }
 
@@ -613,20 +610,29 @@ video {
 
 .red {
   background: rgba(233, 64, 90, 0.6);
-  background-image: url("http://localhost:2002/static/images/downloadIcon.png");
+  background-image: url("http://www.latetitlecard.com/static/images/downloadIcon.png");
   background-size: cover;
+}
+.red a:hover {
+  color: #13a0ff;
 }
 
 .blue {
   background: rgba(0, 171, 234, 0.6);
-  background-image: url("http://localhost:2002/static/images/iTunesLogo.png");
+  background-image: url("http://www.latetitlecard.com/static/images/iTunesLogo.png");
   background-size: cover;
+}
+.blue a:hover {
+  color: #13a0ff;
 }
 
 .orange {
   background: rgba(250, 186, 45, 0.6);
-  background-image: url("http://localhost:2002/static/images/rssLogo.png");
+  background-image: url("http://www.latetitlecard.com/static/images/rssLogo.png");
   background-size: cover;
+}
+.orange a:hover {
+  color: #13a0ff;
 }
 
 /* End Podcast Page */
