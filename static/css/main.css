@@ -606,6 +606,10 @@ video {
   padding-bottom: 50px;
   margin: 0 auto;
   border-radius: 5px;
+  transition: width 1s;
+}
+.innerColDiv:hover {
+  width: 55%;
 }
 
 .red {
@@ -613,26 +617,17 @@ video {
   background-image: url("http://www.latetitlecard.com/static/images/downloadIcon.png");
   background-size: cover;
 }
-.red a:hover {
-  color: #13a0ff;
-}
 
 .blue {
   background: rgba(0, 171, 234, 0.6);
   background-image: url("http://www.latetitlecard.com/static/images/iTunesLogo.png");
   background-size: cover;
 }
-.blue a:hover {
-  color: #13a0ff;
-}
 
 .orange {
   background: rgba(250, 186, 45, 0.6);
   background-image: url("http://www.latetitlecard.com/static/images/rssLogo.png");
   background-size: cover;
-}
-.orange a:hover {
-  color: #13a0ff;
 }
 
 /* End Podcast Page */
