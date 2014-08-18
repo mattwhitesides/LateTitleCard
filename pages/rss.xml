@@ -30,7 +30,7 @@
           <item>
             <title>{{ episode.name }}</title>
             <itunes:author>Tyler Hall</itunes:author>
-            <itunes:subtitle>{{ episode.deck }}</itunes:subtitle>
+            <itunes:subtitle>A show about Movies, TV, Video Games and of course Super Heros</itunes:subtitle>
             <itunes:summary>{{ episode.deck }}</itunes:summary>
             <itunes:image href="{{episode.header_image|imageSize(1400)}}" />
             <enclosure url="http://www.latetitlecard.com{{ episode.audio_file.url }}" length="{{Math.floor(episode.audio_file.duration) }}" type="{{ episode.audio_file.type }}"/>
