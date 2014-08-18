@@ -244,11 +244,6 @@ hr.horizontalSeparatorAlt
       height: 220px
       border: 1px solid black
       box-shadow: 0px 0px 10px white
-      @include unDimAnimationMixin($dimLength)
-      // &:nth-child(1)
-      //   border-top-left-radius: $smallHeroRadius
-      // &:nth-child(3)
-      //   border-top-right-radius: $smallHeroRadius
     li:hover
       @include dimAnimationMixin($dimLength)
     li:first-child:after
@@ -431,7 +426,7 @@ ul, ol, dl
   display: block
   width: 100px
   height: 100px
-  border-radius: 66px
+  @include border-radius(66px)
   border: 4px double #ccc
   font-size: 20px
   color: #ffffff
@@ -459,6 +454,53 @@ article
   a:hover
     color: $globalBlueColor
 
+.listContent
+  h2
+    padding-top: 88px
+  &:hover
+    h2
+      color: $globalBlueColor
+
+.listContentItems
+  -webkit-box-shadow: 1px 1px 8px grey
+  -moz-box-shadow: 1px 1px 8px grey
+  box-shadow: 1px 1px 8px grey
+
+.listContentItems-group1
+  transition: width 1s
+  height: 200px
+  width: 100%
+  &:hover
+    width: 105%
+
+.listContentItems-group2
+  transition: width 1s
+  height: 200px
+  width: 75%
+  &:hover
+    width: 80%
+
+.listContentItems-group3
+  transition: width 1s
+  height: 200px
+  width: 50%  
+  &:hover
+    width: 55%
+
+.listContentItems-group4
+  transition: width 1s
+  height: 200px
+  width: 100%
+  &:hover
+    width: 105%
+
+.listContentItems-group5
+  transition: width 1s
+  height: 200px
+  width: 100%
+  &:hover
+    width: 105%
+
 
 /* End List Grid Setup */
 
@@ -473,7 +515,7 @@ article
     &:hover
       background-color: rgba(19,160,255, .4)
       text-decoration: none
-      border-radius: 20px
+      @include border-radius(20px)
     h3
       font-size: 150%
       color: white
@@ -486,7 +528,7 @@ article
 
 #st-search-input
   background: black
-  border-radius: 5px
+  @include border-radius(5px)
   border: 1px solid black
   outline: none 
   height: 25px 
@@ -532,7 +574,7 @@ video
 $padding: 20px
 
 .grid2
-  background: white
+  background: black
   margin: 0 0 $padding 0
   &:after
     content: ""
@@ -578,7 +620,7 @@ $padding: 20px
   height: 275px
   padding-bottom: 50px
   margin: 0 auto
-  border-radius: 5px
+  @include border-radius(5px)
   transition: width 1s, background 1s
   &:hover
     width: 55%

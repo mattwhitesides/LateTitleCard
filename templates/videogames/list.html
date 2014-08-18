@@ -27,7 +27,7 @@
   {% set data = data|sort('publish_date', true) %}
 
   {# This is how you set pagination. It's always important to do this after your sort. #}
-  {% set data = paginate(data, 10) %}
+  {% set data = paginate(data, 5) %}
 
   <h1 class="centerText">Video Games</h1>
 
@@ -52,20 +52,19 @@
     {% endif %}
   {% endfor %}
   
-  <div class="grid group">
-    <ul>
-      {% for object in data %}
-       <li>
-          <div>
-            <a href="{{ url(object) }}">
-              <img src="{{ object.small_header_image|imageSize(200) }}"><br>
-              {{ object.name }}
-            </a>
-          </div>        
-        </li>
-      {% endfor %}
-    </ul> 
-  </div>
+  {% for item in data %}
+    <div class="listContent grid2">
+        <div class="col-1-4">&nbsp;</div>
+          <a href="{{ url(item) }}">
+            <div class="col-1-2">
+              <div class="listContentItems listContentItems-group{{ loop.index }}" style="background-image:url('{{ item.header_image|imageSize(1920) }}'); background-position:center;">
+                <h2 class="centerText">{{ item.name }}</h2>
+              </div>
+            </div>
+          </a>
+        <div class="col-1-4">&nbsp;</div>
+    </div>
+  {% endfor %}
 
   {# The actual pagination template, feel free to edit or replace the default one. #}
   {% include "templates/partials/paginator.html" %}
