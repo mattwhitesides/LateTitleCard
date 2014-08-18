@@ -579,7 +579,7 @@ $padding: 20px
   padding-bottom: 50px
   margin: 0 auto
   border-radius: 5px
-  transition: width 1s
+  transition: width 1s, background 1s
   &:hover
     width: 55%
 
@@ -589,15 +589,27 @@ $alpha: .6
   background: rgba(233,64,90,$alpha)
   background-image: url('http://www.latetitlecard.com/static/images/downloadIcon.png')
   background-size: cover
+  &:hover
+    background: rgba(233,64,90,1)
+    background-image: url('http://www.latetitlecard.com/static/images/downloadIcon.png')
+    background-size: cover
 
 .blue
   background: rgba(0,171,234,$alpha)
   background-image: url('http://www.latetitlecard.com/static/images/iTunesLogo.png')
   background-size: cover
+  &:hover
+    background: rgba(0,171,234,1)    
+    background-image: url('http://www.latetitlecard.com/static/images/iTunesLogo.png')
+    background-size: cover
 
 .orange
   background: rgba(250,186,45,$alpha)
   background-image: url('http://www.latetitlecard.com/static/images/rssLogo.png')
   background-size: cover
-  
+  &:hover
+    background: rgba(250,186,45,1)
+    background-image: url('http://www.latetitlecard.com/static/images/rssLogo.png')
+    background-size: cover
+
 /* End Podcast Page */
