@@ -360,7 +360,7 @@ hr.horizontalSeparatorAlt {
   disply: table-cell;
 }
 .upcommingDiv th {
-  border-bottom: 2px solid #13a0ff;
+  border-bottom: 1px solid #13a0ff;
   border-left: 0px;
   border-right: 0px;
 }

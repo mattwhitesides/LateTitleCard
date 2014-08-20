@@ -121,10 +121,10 @@
   <section class="bodyContent group">
 
     <div class="bodyList group">
-      <h3 class="bodyListHeaders">Reviews:</h3>
-      <hr class="horizontalSeparatorAlt">
       <ul>
-        {% for listReview in listReviews|sort('publish_date', true)|slice(2,4) %} 
+        <h3 class="bodyListHeaders">Reviews:</h3>
+        <hr class="horizontalSeparatorAlt">
+        {% for listReview in listReviews|sort('publish_date', true)|slice(0,4) %} 
           <li>
             <div class="bodyListContent">
               <a href="{{ url(listReview) }}" class="bodyListAnchor">
@@ -140,7 +140,7 @@
                     {% endif %}
                   </h4>
                   <p>
-                    {{ listReview.deck }}
+                    {{ listReview.deck|truncate(80) }}
                   </p>              
                 </div>  
               </a>
@@ -168,7 +168,7 @@
                   </h4>
                   <p>
                     {{ listArticle.deck }}
-                    {{ listArticle.summary_text|truncate(30) }}
+                    {{ listArticle.summary_text|truncate(80) }}
                   </p>              
                 </div>  
               </a>
