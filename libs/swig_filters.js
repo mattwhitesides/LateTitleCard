@@ -24,6 +24,7 @@ if (typeof String.prototype.endsWith != 'function') {
 module.exports.init = function (swig) {
 
   var siteDns = '';
+  var firebaseConf = {};
 
   var upper = function(input) {
     return input.toUpperCase();
@@ -128,6 +129,10 @@ module.exports.init = function (swig) {
 
       imageSource = imageSource + '=s' + size;
 
+      if(imageSource.indexOf('http://') === 0) {
+        imageSource = imageSource.replace('http://', 'https://');
+      }
+
     } else if (typeof input === 'string') {
 
       var params = [];
@@ -148,7 +153,13 @@ module.exports.init = function (swig) {
       }
 
       params.push('url=' + encodeURIComponent(input));
-      params.push('key=13dde81b8137446e89c7933edca679eb');
+
+      if(firebaseConf.embedly) {
+        params.push('key=' + firebaseConf.embedly);
+      } else {
+        params.push('key=13dde81b8137446e89c7933edca679eb');
+      }
+      
       imageSource = 'http://i.embed.ly/1/display/resize?' + params.join('&');
     }
 
@@ -172,6 +183,10 @@ module.exports.init = function (swig) {
       imageSource = input.resize_url;
 
       imageSource = imageSource + '=s' + size + '-c';
+
+      if(imageSource.indexOf('http://') === 0) {
+        imageSource = imageSource.replace('http://', 'https://');
+      }
       
     } else if (typeof input === 'string') {
 
@@ -189,7 +204,12 @@ module.exports.init = function (swig) {
       }
 
       params.push('url=' + encodeURIComponent(input));
-      params.push('key=13dde81b8137446e89c7933edca679eb');
+
+      if(firebaseConf.embedly) {
+        params.push('key=' + firebaseConf.embedly);
+      } else {
+        params.push('key=13dde81b8137446e89c7933edca679eb');
+      }
       imageSource = 'http://i.embed.ly/1/display/crop?' + params.join('&');
     }
     
@@ -222,6 +242,10 @@ module.exports.init = function (swig) {
 
   this.setSiteDns = function(dns) {
     siteDns = dns;
+  }
+
+  this.setFirebaseConf = function(conf) {
+    firebaseConf = conf;
   }
 
   var date = function(input, format, offset, abbr) {
@@ -311,21 +335,64 @@ module.exports.init = function (swig) {
     return timestring;
   };
 
-  var where = function(input, property, filter) {
+  var where = function(input, property) {
     var filtered = [];
 
+    var args =  [].slice.apply(arguments);
+    var filters = args.slice(2);
+
     input.forEach(function(item) {
-      if(typeof filter === 'undefined') {
+      if(filters.length === 0) {
         if(item[property]) // Exists
           filtered.push(item);
       } else {
-        if(item[property] === filter) 
-          filtered.push(item);
+        filters.forEach(function(filter) {
+          if(item[property] === filter) {
+            filtered.push(item);
+            return false;
+          }
+        })
       }
     });
     return filtered;
   }
 
+  var exclude = function(input, property) {
+    var filtered = [];
+
+    var args =  [].slice.apply(arguments);
+    var filters = args.slice(2);
+
+    input.forEach(function(item) {
+      var addIn = true;
+
+      if(filters.length === 0) {
+        if(!item[property]) // Exists
+          filtered.push(item);
+      } else {
+        filters.forEach(function(filter) {
+          if(Array.isArray(filter)) {
+            filter.forEach(function(checkItem) {
+              if(item[property] === checkItem[property]) {
+                addIn = false;
+                return false;
+              }
+            })
+          } else {
+            if(item[property] === filter) {
+              addIn = false;
+              return false;
+            }
+          }
+        })
+
+        if(addIn) {
+          filtered.push(item);
+        }
+      }
+    });
+    return filtered;
+  }
   var abs = function(input) {
     return Math.abs(input);
   };
@@ -366,7 +433,7 @@ module.exports.init = function (swig) {
       return singular;
     }
 
-    if(number > 1) {
+    if(number > 1 || number === 0) {
       return suffix;
     } 
 
@@ -393,6 +460,7 @@ module.exports.init = function (swig) {
   swig.setFilter('markdown', markdown);
   swig.setFilter('date', date);
   swig.setFilter('where', where);
+  swig.setFilter('exclude', exclude);
   swig.setFilter('duration', duration);
   swig.setFilter('abs', abs);
   swig.setFilter('linebreaks', linebreaks);

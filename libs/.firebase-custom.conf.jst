@@ -1,5 +1,9 @@
 {
   "secretKey"   : "<%= secretKey %>",
   "siteName"   : "<%= siteName %>",
-  "firebase"   : "<%= firebase %>"
+  "firebase"   : "<%= firebase %>",
+  "embedly"    : "<%= embedlyKey %>",
+  "server"     : "<%= serverAddr %>",
+  "custom"     : true<% if (noSearch) { %>,
+  "noSearch"   : <%= noSearch %><% } %>
 }
