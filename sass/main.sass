@@ -16,7 +16,7 @@ $globalBlueColor: rgb(19,160,255)
   -moz-box-sizing: $bs
   box-sizing: $bs
 
-@mixin border-radius($radius) 
+@mixin border-radius($radius)
   -webkit-border-radius: $radius
   -moz-border-radius: $radius
   -ms-border-radius: $radius
@@ -56,47 +56,47 @@ $globalBlueColor: rgb(19,160,255)
   -webkit-transform: translate($x,$y) /* Chrome, Safari, Opera */
   transform: translate($x,$y)
 
-@font-face 
+@font-face
   font-family: caviarDreams
   src: url($fontsAssetsPath + "basictitlefont.ttf")
 
-@-webkit-keyframes dimAnimation 
-  from 
+@-webkit-keyframes dimAnimation
+  from
     opacity: $dimOpacity
-  to 
+  to
     opacity: 1
-@keyframes dimAnimation 
-  from 
+@keyframes dimAnimation
+  from
     opacity: $dimOpacity
-  to 
+  to
     opacity: 1
-@-webkit-keyframes unDimAnimation 
-  from 
+@-webkit-keyframes unDimAnimation
+  from
     opacity: 1
-  to 
+  to
     opacity: $dimOpacity
-@keyframes unDimAnimation 
-  from 
+@keyframes unDimAnimation
+  from
     opacity: 1
-  to 
+  to
     opacity: $dimOpacity
 
 div
   display: block
 
-body 
+body
   -webkit-font-smoothing: antialiased
   height: auto
-  min-height: 100% 
+  min-height: 100%
   background-color: black
   color: $globalColor
-  h1, h2, h3, h4, p, li 
+  h1, h2, h3, h4, p, li
     font-family: $bodyFont
     text-shadow: black 0.1em 0.1em 0.2em
-  h1 
-    font-size: 295% 
+  h1
+    font-size: 295%
     font-weight: 100
-  a 
+  a
     color: $globalColor
     opacity: .9
     text-decoration: none
@@ -106,7 +106,7 @@ body
 .wrapper
   box-sizing: border-box
 
-.centerText 
+.centerText
   text-align: center
 
 .large
@@ -116,7 +116,7 @@ body
   margin: 0 auto
 
 // For the about page
-.imgCenter 
+.imgCenter
   position: relative
   left: 50%
   width: 800px
@@ -129,17 +129,17 @@ body
   width: auto
   margin: 0 auto
   ul
-    list-style-type: none 
+    list-style-type: none
     text-align: center
     padding-top: 10px
     li
       display: inline
-      a:hover 
+      a:hover
         // color: $globalColor .75
         // background-color: $globalColor
         @include radialGradient
     li a
-      padding: .9em 1em 
+      padding: .9em 1em
       color: $globalColor
       img
         max-height: 65px
@@ -148,36 +148,36 @@ body
         width: auto
 
 .contentList
-  a:hover 
+  a:hover
     color: $globalColor
     background-color: #fff
-    @include border-radius(5px) 
-    margin: 0 auto 
+    @include border-radius(5px)
+    margin: 0 auto
 
-hr.horizontalSeparator 
-  border: 0 
+hr.horizontalSeparator
+  border: 0
   height: 0px
   position: relative
   margin: 0.5em 0 /* Keep other elements away from pseudo elements*/
 
-hr.horizontalSeparator:before 
+hr.horizontalSeparator:before
   top: -0.5em
   height: .3em
 
-hr.horizontalSeparator:after 
+hr.horizontalSeparator:after
   content: " "
   height: 0.5em   /* half the height of :before */
   top: 1px    /* height of hr*/
 
-hr.horizontalSeparator:before, hr.horizontalSeparator:after 
+hr.horizontalSeparator:before, hr.horizontalSeparator:after
   content: " "
   position: absolute
   width: 100%
 
-hr.horizontalSeparator, hr.horizontalSeparator:before 
+hr.horizontalSeparator, hr.horizontalSeparator:before
   @include radialGradient
 
-body, hr.horizontalSeparator:after 
+body, hr.horizontalSeparator:after
   background: #000
 
 hr.horizontalSeparatorAlt
@@ -186,10 +186,10 @@ hr.horizontalSeparatorAlt
   border-top: 1px solid rgba(0, 0, 0, 0.1)
   border-bottom: 1px solid $globalBlueColor
 
-
 /* End Navbar CSS */
 
 /* Begin Hero Unit CSS */
+
 #heroUnit
   height: 92%
   @include box-shadow
@@ -197,13 +197,12 @@ hr.horizontalSeparatorAlt
     color: $globalBlueColor
 
 .smallHeroDivSect
-  border-top: 1px solid #000
   position: relative
   .smallHeroDiv
     position: relative
     width: 100%
     max-width: $smallHeroDivWidth
-    margin: 0 auto
+    margin: 0
   :after
     content: " "
     display: block
@@ -224,7 +223,7 @@ hr.horizontalSeparatorAlt
       padding: 20px 15px 0px 20px
       position: relative
       left: 0
-      bottom: 0 
+      bottom: 0
       h4
         font-weight: 600
         position: absolute
@@ -268,7 +267,7 @@ hr.horizontalSeparatorAlt
 //     &:nth-child(1)
 //       border-top-left-radius: 0px
 //     &:nth-child(3)
-//       border-top-right-radius: 0px  
+//       border-top-right-radius: 0px
 //     &:nth-child(1)
 //       border-bottom-left-radius: $smallHeroRadius
 //     &:nth-child(3)
@@ -303,9 +302,9 @@ hr.horizontalSeparatorAlt
 
 .bodyListHeaders
   color: $globalBlueColor
-  line-height: 0px  
+  line-height: 0px
 
-.bodyListContent  
+.bodyListContent
   height: 140px
   &:before
     content: " "
@@ -320,7 +319,7 @@ hr.horizontalSeparatorAlt
   &:hover
     h4
       color: $globalBlueColor
-  img 
+  img
     max-height: 140px
 
 .bodyListItems
@@ -440,7 +439,7 @@ ul, ol, dl
   text-decoration: none
   text-shadow: 0 1px 0 #fff
   background: rgba(255,255,255,.3)
-    
+
 article
   margin: 0 25%
 
@@ -496,9 +495,9 @@ article
 
 /* Search */
 
-#st-results-container 
+#st-results-container
   margin: 0 27%
-  a 
+  a
     display: block
     padding: 20px 0px
     line-height: 1.5
@@ -520,12 +519,12 @@ article
   background: black
   @include border-radius(5px)
   border: 1px solid black
-  outline: none 
-  height: 25px 
+  outline: none
+  height: 25px
   width: 25px
   display: inline
   transition: width 1.5s, box-shadow 1.5s, border 1.5s, background-image 1.5s
-  background-image: url("../images/searchIcon.png") 
+  background-image: url("../images/searchIcon.png")
   background-repeat: no-repeat
   color: white
   &:hover
@@ -545,7 +544,7 @@ article
 
 /* Clearfix */
 
-.group:after 
+.group:after
   content: ""
   display: table
   clear: both
@@ -634,7 +633,7 @@ $alpha: .6
   background-image: url('http://www.latetitlecard.com/static/images/iTunesLogo.png')
   background-size: cover
   &:hover
-    background: rgba(0,171,234,1)    
+    background: rgba(0,171,234,1)
     background-image: url('http://www.latetitlecard.com/static/images/iTunesLogo.png')
     background-size: cover
 

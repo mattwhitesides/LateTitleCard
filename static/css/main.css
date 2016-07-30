@@ -7,7 +7,6 @@
   from {
     opacity: 0.85;
   }
-
   to {
     opacity: 1;
   }
@@ -16,7 +15,6 @@
   from {
     opacity: 0.85;
   }
-
   to {
     opacity: 1;
   }
@@ -25,7 +23,6 @@
   from {
     opacity: 1;
   }
-
   to {
     opacity: 0.85;
   }
@@ -34,7 +31,6 @@
   from {
     opacity: 1;
   }
-
   to {
     opacity: 0.85;
   }
@@ -125,7 +121,7 @@ body a:hover {
 
 .contentList a:hover {
   color: rgba(255, 255, 255, 0.87);
-  background-color: white;
+  background-color: #fff;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -167,7 +163,7 @@ hr.horizontalSeparator, hr.horizontalSeparator:before {
 }
 
 body, hr.horizontalSeparator:after {
-  background: black;
+  background: #000;
 }
 
 hr.horizontalSeparatorAlt {
@@ -190,7 +186,6 @@ hr.horizontalSeparatorAlt {
 }
 
 .smallHeroDivSect {
-  border-top: 1px solid black;
   position: relative;
   after-content: " ";
   after-display: block;
@@ -204,7 +199,7 @@ hr.horizontalSeparatorAlt {
   position: relative;
   width: 100%;
   max-width: 1050px;
-  margin: 0 auto;
+  margin: 0;
 }
 .smallHeroDivSect ul {
   display: table;
@@ -448,13 +443,13 @@ ul, ol, dl {
   -moz-border-radius: 66px;
   -ms-border-radius: 66px;
   border-radius: 66px;
-  border: 4px double #cccccc;
+  border: 4px double #ccc;
   font-size: 20px;
-  color: white;
+  color: #ffffff;
   line-height: 50px;
   text-align: center;
   text-decoration: none;
-  text-shadow: 0 1px 0 white;
+  text-shadow: 0 1px 0 #fff;
   background: rgba(255, 255, 255, 0.3);
 }
 
@@ -486,9 +481,9 @@ article {
 }
 
 .listContentItems {
-  -webkit-box-shadow: 1px 1px 8px gray;
-  -moz-box-shadow: 1px 1px 8px gray;
-  box-shadow: 1px 1px 8px gray;
+  -webkit-box-shadow: 1px 1px 8px grey;
+  -moz-box-shadow: 1px 1px 8px grey;
+  box-shadow: 1px 1px 8px grey;
 }
 
 [class*='listContentItems-group1-'] {
@@ -548,8 +543,8 @@ article {
   color: white;
 }
 #st-search-input:hover {
-  box-shadow: 0 0 5px #dddddd inset;
-  border: 1px solid #dddddd;
+  box-shadow: 0 0 5px #DDD inset;
+  border: 1px solid #DDD;
   background-image: none;
   width: 200px;
 }
@@ -688,3 +683,5 @@ video {
 }
 
 /* End Podcast Page */
+
+/*# sourceMappingURL=main.css.map */

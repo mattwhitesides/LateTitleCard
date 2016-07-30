@@ -22,10 +22,10 @@
 {% set listReviews = get('movies', 'videogames', 'tv') %}
 {% set listNews = get('articles', 'podcast') %}
 {% set heroItems = get('articles','movies', 'podcast', 'videogames', 'tv') %}
- 
-{% block content %} 
 
-  {% for heroItem in heroItems|sort('publish_date', true)|slice(0,1) %} 
+{% block content %}
+
+  {% for heroItem in heroItems|sort('publish_date', true)|slice(0,1) %}
     <div class="not-fullscreen background parallax not-overflow" id="heroUnit" style="background-image:url('{{ heroItem.header_image|imageSize(2048) }}');" data-img-width="1920" data-img-height="1080">
       <div class="content-a">
         <div class="content-b">
@@ -59,7 +59,7 @@
   <section class="smallHeroDivSect">
     <div class="smallHeroDiv">
       <ul>
-        {% for item in items|sort('publish_date', true)|slice(1,3) %} 
+        {% for item in items|sort('publish_date', true)|slice(1,3) %}
           <li style="background-image: url({{ item.small_header_image|imageSize(350) }})">
             <div>
               <a href="{{ url(item) }}">
@@ -81,15 +81,15 @@
               </a>
             </div>
           </li>
-        {% endfor %} 
-      </ul>  
+        {% endfor %}
+      </ul>
     </div>
   </section>
 
   <section class="smallHeroDivSect" >
     <div class="smallHeroDiv" id="smallHeroDiv2">
       <ul>
-        {% for item in items|sort('publish_date', true)|slice(4,3) %} 
+        {% for item in items|sort('publish_date', true)|slice(4,3) %}
           <li style="background-image: url({{ item.small_header_image|imageSize(350) }})">
             <div>
               <a href="{{ url(item) }}">
@@ -111,8 +111,8 @@
               </a>
             </div>
           </li>
-        {% endfor %} 
-      </ul>  
+        {% endfor %}
+      </ul>
     </div>
   </section>
 
@@ -124,7 +124,7 @@
       <ul>
         <h3 class="bodyListHeaders">Reviews:</h3>
         <hr class="horizontalSeparatorAlt">
-        {% for listReview in listReviews|sort('publish_date', true)|slice(0,4) %} 
+        {% for listReview in listReviews|sort('publish_date', true)|slice(0,4) %}
           <li>
             <div class="bodyListContent">
               <a href="{{ url(listReview) }}" class="bodyListAnchor">
@@ -141,8 +141,8 @@
                   </h4>
                   <p>
                     {{ listReview.deck|truncate(80) }}
-                  </p>              
-                </div>  
+                  </p>
+                </div>
               </a>
             </div>
             {% if not loop.last %}
@@ -153,7 +153,7 @@
 
         <h3 class="bodyListHeaders">News:</h3>
         <hr class="horizontalSeparatorAlt">
-        {% for listArticle in listNews|sort('publish_date', true)|slice(2,3) %} 
+        {% for listArticle in listNews|sort('publish_date', true)|slice(2,3) %}
           <li>
             <div class="bodyListContent">
               <a href="{{ url(listArticle) }}" class="bodyListAnchor">
@@ -169,8 +169,8 @@
                   <p>
                     {{ listArticle.deck }}
                     {{ listArticle.summary_text|truncate(80) }}
-                  </p>              
-                </div>  
+                  </p>
+                </div>
               </a>
             </div>
             {% if not loop.last %}
@@ -210,7 +210,7 @@
       </table>
       <a href="http://www.rottentomatoes.com" target="_blank"><p>Data courtesy of Rottentomatoes.com</p></a>
     </div>
-      
-  </section>  
 
-{% endblock %} 
+  </section>
+
+{% endblock %}
