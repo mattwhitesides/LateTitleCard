@@ -18,7 +18,7 @@
 {% block title %}{% parent %} - Home{% endblock %}
 
 {# First, grab the articles from the CMS #}
-{% set items = get('articles','movies', 'podcast', 'videogames', 'tv') %}
+{% set items = get('articles', 'movies', 'podcast', 'videogames', 'tv') %}
 {% set listReviews = get('movies', 'videogames', 'tv') %}
 {% set listNews = get('articles', 'podcast') %}
 {% set heroItems = get('articles','movies', 'podcast', 'videogames', 'tv') %}
@@ -59,7 +59,7 @@
   <section class="smallHeroDivSect">
     <div class="smallHeroDiv">
       <ul>
-        {% for item in items|sort('publish_date', true)|slice(1,3) %}
+        {% for item in items|sort('publish_date', true)|slice(1,6) %}
           <li style="background-image: url({{ item.small_header_image|imageSize(350) }})">
             <div>
               <a href="{{ url(item) }}">
@@ -86,7 +86,7 @@
     </div>
   </section>
 
-  <section class="smallHeroDivSect" >
+  <!-- <section class="smallHeroDivSect" >
     <div class="smallHeroDiv" id="smallHeroDiv2">
       <ul>
         {% for item in items|sort('publish_date', true)|slice(4,3) %}
@@ -114,7 +114,7 @@
         {% endfor %}
       </ul>
     </div>
-  </section>
+  </section> -->
 
   <br><br><hr class="horizontalSeparator" style="margin: 0 15%"></hr><br>
 
